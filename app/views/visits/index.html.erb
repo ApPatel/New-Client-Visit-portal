@@ -1,0 +1,54 @@
+<h2>Visits</h2>
+
+  <div style="height: 50px">
+  </div>
+
+
+
+
+<div style="min-width: 960px; overflow:auto;">
+    <table  id="index_table">
+      <thead>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><font size="4"><b>Date </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Agenda Sheet </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Show </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Edit </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Destroy </b></font></td>
+
+
+        </tr>
+      </thead>
+      
+    <% @visits.each do |visit| %>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= visit.Agenda %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= visit.Description %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><%= visit.Date %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= visit.Customers %></td>
+
+        <%  if visit.attachment.blank? %>
+            <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px ">Not Available</td>
+        <% else %>
+            <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), visit.attachment.url)%></td>
+        <% end %>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><b><%= link_to(image_tag("show.png", :border => 0), visit )%></b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><b><%= link_to(image_tag("edit.png", :border => 0) , edit_visit_path(visit) )%></b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><b><%= link_to(image_tag("destroy.png", :border => 0), visit, confirm: 'Are you sure?', method: :delete )%></b></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+
+
+  <div style="height: 50px">
+  </div>
+
+<div class= 'btn btn-info'>
+<font size="3" color=#FFFFFF>
+<%= link_to 'New Visit', new_visit_path, :style => 'text-decoration: none'  %>
+</font>
+</div>

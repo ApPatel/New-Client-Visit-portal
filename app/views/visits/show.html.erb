@@ -1,0 +1,41 @@
+  <div style=" min-height: 50px">
+  </div>
+
+<div style="min-width: 960px; overflow:auto;">
+    <table  id="show_table" >
+      <thead>
+     <tr>
+       
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><font size="4"><b>Date </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Agenda Sheet </b></font></td>
+
+      </tr>
+      </thead>
+
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= @visit.Agenda %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Description %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Date %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px "><%= @visit.Customers %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), @visit.attachment.url)%></td>
+
+
+
+ 
+
+        </tr>
+    </table>
+  </div>
+
+
+
+
+  <div style=" min-height: 50px">
+  </div>
+
+<%= link_to(image_tag("back-icon.png", :border => 0) , visits_path , :style => 'text-decoration: none')  %> ||
+<%= link_to(image_tag("edit-big.png", :border => 0) , edit_visit_path(@visit) )%> 
+

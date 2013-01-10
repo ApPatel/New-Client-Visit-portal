@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Agenda: MyString
+  Description: MyString
+  Date: 2013-01-10
+  Customers: MyString
+
+two:
+  Agenda: MyString
+  Description: MyString
+  Date: 2013-01-10
+  Customers: MyString

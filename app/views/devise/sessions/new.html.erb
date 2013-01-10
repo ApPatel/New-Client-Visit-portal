@@ -1,0 +1,20 @@
+
+<div  style="height:50px; margin-left:30px;"><h1>Sign in</h1></div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+  <div class="well span4">
+    <div style="height:60px"><b><font size="3px">Email<br>
+          <%= f.email_field :email, :required => true%></div>
+
+
+      <div style="height:60px">Password</b></font>
+      <%= f.password_field :password, :required => true %></div>
+
+    <div style="height:50px" ><% if devise_mapping.rememberable? %>
+        <%= f.check_box :remember_me %>  Remember Me
+      <% end %>
+    </div>
+    <div style="height:30px"><%= f.submit "Sign in", :class=> 'btn btn-primary'%></div>
+  <% end %><br>
+  <%= render :partial => "devise/shared/links" %>
+</div>
