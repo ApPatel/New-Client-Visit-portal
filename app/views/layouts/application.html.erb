@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ClientVisit</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
+  <%= stylesheet_link_tag "application", "colorbox", "jquery-ui-1.9.2.custom", :media => "all" %>
+  
+
+
+
+    <style>
+      ul.nav li.dropdown:hover ul.dropdown-menu{
+        display: block;
+      }
+      body{
+        padding: 40px 0 40px 0;
+      }
+
+    </style>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%= render 'shared/header' %>
+	</br>
+    </br>
+    
+    <div class="container-fluid">
+      <div class="notice hide" id="devise_notice"><%= notice%></div>
+      <div class="alert hide" id="devise_alert"><%=  alert%></div>
+	  <div class="span10" style="min-height: 650px; width:72%">
+    
+      <%= yield %>
+  
+  	</div>
 
-<%= yield %>
+    </div> 
+
+  	<footer class="offset5">
+    	&copy; 2010-2013 Tata Consultancy Services Limited.  All Rights Reserved 
+  	</footer>
+
+  	<footer class="offset7">
+    	<%= image_tag "icon-tata.png" %>
+  	</footer>
+
+ 	<%= javascript_include_tag "application","app", "jquery.colorbox","jquery-ui-1.9.2.custom.min"%>
 
 </body>
 </html>
