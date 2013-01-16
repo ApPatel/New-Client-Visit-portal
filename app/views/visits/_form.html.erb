@@ -13,32 +13,27 @@
 
 <div style="height: 50px">
 </div>
-
-  <div class="field">
-    <%= f.label :Agenda , "Agenda:"%>
+<div class="well span4">
+  <div class="field"><font size="3px">Agenda :</font><br>
     <%= f.text_field :Agenda %>
   </div>
 
-  <div class="field" >
-    <%= f.label :Description, "Description:" %>
+  <div class="field" > <font size="3px">Description : </font><br>
     <%= f.text_field :Description %>
   </div>
 
-<div class="field" id="Date">
-  <%= f.label :Date, "Date:" %>
+<div class="field" id="Date"> <font size="3px">Date : </font><br>
   <%= f.text_field :Date %>
 </div>
 
 
 
-  <div class="field">
-    <%= f.label :Customers, "Customers:" %>
+  <div class="field"> <font size="3px">Customers : </font><br>
     <%= f.text_field :Customers %>
   </div>
 
 
-<div class="field">
-    <%= f.label :attachment, "Attachment:" %>
+<div class="field"> <font size="3px">Agenda Sheet : </font><br>
     <%= f.file_field :attachment %>
   </div>
 
@@ -49,6 +44,9 @@
 
 <div>  <%= f.submit "Save", :class=> 'btn btn-primary' %></div>
 
-
+</div>
 
 <% end %>
+<div class="span9">
+<%= link_to(image_tag("back-icon.png", :border => 0) , visits_path , :style => 'text-decoration: none')  %> <b><font size="3px">Back</b></font><br>
+</div>

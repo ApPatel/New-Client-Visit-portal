@@ -18,7 +18,7 @@ $(function(){
         });
         setTimeout(function() {
             $.colorbox.close();
-        }, 1400);
+        }, 2000);
     }
 
 });
