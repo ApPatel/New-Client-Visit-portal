@@ -9,4 +9,12 @@ class Visit < ActiveRecord::Base
 
 	has_attached_file :attachment
 
+	def self.search(search)
+  		if search
+   			where('Agenda LIKE ?', "%#{search}%")
+  		else
+    		scoped
+  		end
+	end
+
 end

@@ -1,24 +1,30 @@
 class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
+  helper_method :sort_column, :sort_direction
+  
   def index
-    @visits = Visit.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @visits }
-    end
+  # @visits = Visit.all
+ @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+ 
+  # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)
+  #     respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @visits }
+  #   end
   end
+
+
 
   # GET /visits/1
   # GET /visits/1.json
   def show
     @visit = Visit.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @visit }
-    end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @visit }
+    # end
   end
 
   # GET /visits/new
@@ -26,10 +32,10 @@ class VisitsController < ApplicationController
   def new
     @visit = Visit.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @visit }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @visit }
+    # end
   end
 
   # GET /visits/1/edit
@@ -80,4 +86,17 @@ class VisitsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  
+  def sort_column
+    Visit.column_names.include?(params[:sort]) ? params[:sort] : "Date"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+
+
 end

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
-  <%= stylesheet_link_tag "application", "colorbox", "jquery-ui-1.9.2.custom", :media => "all" %>
+  <%= stylesheet_link_tag "application", "colorbox", "jquery-ui-1.9.2.custom.min", :media => "all" %>
   
 
 
@@ -14,8 +14,8 @@
       body{
         padding: 40px 0 40px 0;
       }
+ </style>
 
-    </style>
 
   <%= csrf_meta_tags %>
 </head>

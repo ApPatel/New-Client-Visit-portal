@@ -41,3 +41,17 @@ $(function() {
     });
 
 })
+
+
+
+
+$(function() {
+  $("#visits th a, #visits .pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#visits_search input").keyup(function() {
+    $.get($("#visits_search").attr("action"), $("#visits_search").serialize(), null, "script");
+    return false;
+  });
+});

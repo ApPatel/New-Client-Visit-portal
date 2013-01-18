@@ -7,11 +7,6 @@ ClientVisit::Application.routes.draw do
 
   root :to => 'visits#index'
 
-  resource :user, :controller => "user" do
-    member do
-      post 'manageUser'
-    end
-  end
 
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
