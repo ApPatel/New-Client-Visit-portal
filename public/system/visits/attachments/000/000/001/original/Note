@@ -1,0 +1,10 @@
+# Installing the mysql client to allow mysql gem to install..
+	sudo apt-get install libmysqlclient-dev 
+
+
+# Removing a non-empty directory
+	rm -Rf /my/path    -----> delete all subfiles and subfolders 
+	sudo rm -r /folder -----> delete folder (dont use sudo if u are usings as root)
+
+
+# 
