@@ -9,9 +9,9 @@ group :development do
 gem 'mysql2'
 end
 
-group :production do
-gem 'pg'
-end
+# group :production do
+# gem 'pg'
+# end
 
 
 gem 'devise'
