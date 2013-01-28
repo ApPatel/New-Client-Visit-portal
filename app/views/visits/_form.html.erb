@@ -48,5 +48,6 @@
 
 <% end %>
 <div class="span9">
-<%= link_to(image_tag("back-icon.png", :border => 0) , visits_path , :style => 'text-decoration: none')  %> <b><font size="3px">Back</b></font><br>
+  <%= image_tag("back-icon.png", :border => 0) %>
+  <%= link_to 'Back', visits_path, :class=> 'btn' %>
 </div>

@@ -20,6 +20,7 @@ gem 'paperclip'
 
 #gem 'will_paginate'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 gem 'jquery-rails'
 
 # Gems used only for assets and not required

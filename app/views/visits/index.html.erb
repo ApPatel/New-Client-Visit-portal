@@ -5,6 +5,7 @@
 
 
 <%= form_tag visits_path, :method => 'get', :id => "visits_search" do %>
+
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -17,8 +18,5 @@
   <div style="height: 50px">
   </div>
 
-<div class= 'btn btn-info'>
-<font size="3" color=#FFFFFF>
-<%= link_to 'New Visit', new_visit_path, :style => 'text-decoration: none'  %>
-</font>
-</div>
+<%= link_to 'New Visit', new_visit_path, :class=> 'btn  btn-custom' %>
+
