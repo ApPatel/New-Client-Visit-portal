@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @agenda.Date %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%= @agenda.StartTime %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%= @agenda.EndTime %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @agenda.Duration %>
+</p>
+
+<p>
+  <b>Agenda:</b>
+  <%= @agenda.Agenda %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @agenda.Details %>
+</p>
+
+<p>
+  <b>Clientparticipants:</b>
+  <%= @agenda.ClientParticipants %>
+</p>
+
+<p>
+  <b>Tcsparticipants:</b>
+  <%= @agenda.TCSParticipants %>
+</p>
+
+
+<%= link_to 'Edit', edit_agenda_path(@agenda) %> |
+<%= link_to 'Back', agendas_path %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Date: 2013-01-29
+  StartTime: 2013-01-29 17:00:26
+  EndTime: 2013-01-29 17:00:26
+  Duration: 2013-01-29 17:00:26
+  Agenda: MyString
+  Details: MyText
+  ClientParticipants: MyString
+  TCSParticipants: MyString
+
+two:
+  Date: 2013-01-29
+  StartTime: 2013-01-29 17:00:26
+  EndTime: 2013-01-29 17:00:26
+  Duration: 2013-01-29 17:00:26
+  Agenda: MyString
+  Details: MyText
+  ClientParticipants: MyString
+  TCSParticipants: MyString

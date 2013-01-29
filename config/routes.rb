@@ -1,6 +1,9 @@
 ClientVisit::Application.routes.draw do
   
 
+  resources :agendas
+
+
   get "user/new"
 
   resources :visits
