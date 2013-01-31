@@ -1,0 +1,84 @@
+      
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+
+    </head>
+
+    <body>
+      <center>  <div id="grid_here" style="width:1200px; height:600px;">
+        </div></center>
+        <script type="text/javascript" charset="utf-8">
+
+      var deco = getUrlVars()["visit"];
+
+ 
+
+      var grid = new dhtmlXGridObject("grid_here");
+            
+            grid.setImagePath("");
+            grid.setHeader("Date,Start Time,End Time,Duration,Agenda,Details,Firm Participants,TCS Participants");
+            grid.enableMultiselect(true)
+            grid.enableLightMouseNavigation(true);
+            grid.setInitWidths("100,100,100,100,200,200,200,200");
+            grid.setSkin("dhx_skyblue");
+            grid.enableAutoHeight(true);
+                    grid.enableMultiline(true);
+        
+            grid.setColTypes("dhxCalendar,coro,coro,ro,txt,txt,txt,txt");
+
+            var combo1 = grid.getCombo(1); 
+            var combo2 = grid.getCombo(2); 
+            combo2.put(0,"Select Start Time"); 
+            combo1.put(7,"7"); 
+            combo1.put(8,"8"); 
+            combo1.put(9,"9"); 
+            combo1.put(10,"10"); 
+            combo1.put(11,"11"); 
+            combo1.put(12,"12"); 
+            combo1.put(13,"13"); 
+            combo1.put(14,"14"); 
+            combo1.put(15,"15"); 
+            combo1.put(16,"16"); 
+            combo1.put(17,"17"); 
+            combo1.put(18,"18"); 
+            combo2.put(0,"Select End Time"); 
+             combo2.put(7,"7"); 
+            combo2.put(8,"8"); 
+            combo2.put(9,"9"); 
+            combo2.put(10,"10"); 
+            combo2.put(11,"11"); 
+            combo2.put(12,"12"); 
+            combo2.put(13,"13"); 
+            combo2.put(14,"14"); 
+            combo2.put(15,"15"); 
+            combo2.put(16,"16"); 
+            combo2.put(17,"17"); 
+            combo2.put(18,"18"); 
+                    
+            grid.init();
+      
+            grid.load("/visit/data?visit="+deco);
+            dp = new dataProcessor("/visit/dbaction?visit="+deco);
+            dp.init(grid);
+
+         
+            
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+        </script>
+       <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['Select Visit Date','Select Start Time','Select End Time','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
+        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <input type="button" value="Export toExcel" onclick='grid.toExcel("http://dhtmlxgrid.appspot.com/export/excel");' class="btn" /></center></center>
+
+   
+   
+    </body>
+
+</html>

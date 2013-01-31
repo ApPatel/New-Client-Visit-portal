@@ -2,7 +2,84 @@ class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
   helper_method :sort_column, :sort_direction
-  
+  def agenda
+    p "helllllooooooooooooo inside agenda"
+     @visit =  Visit.find(params[:visit])  
+
+  end
+
+  def data
+ p "helllllooooooooooooo inside data"
+     @agenda = Agenda.where(:visit_id=> params[:visit])
+
+   
+   end
+
+
+    def dbaction
+        #called for all db actions
+      p "helllllooooooooooooo inside dbaction"
+      p params["c0"]
+      p params["c1"]
+      p params["c2"]
+      p params["c3"]
+      p params["c4"]
+      p params["c5"]
+      p params["c6"]
+      p params["c7"]
+          agenda = params["c4"]
+          date = params["c0"]
+          Date.today.to_s
+          starttime   = params["c1"]
+      
+          endtime = params["c2"]
+          duration = params["c3"]
+        
+          details = params["c5"]
+     
+         clientparticipants   = params["c6"]
+          tcsparticipants= params["c7"]
+          
+
+        @mode = params["!nativeeditor_status"]
+        
+        @id = params["gr_id"]
+        case @mode
+            when "inserted"
+                agenda1 = Agenda.new
+                agenda1.Date = "hii"
+                agenda1.StartTime = starttime
+                agenda1.EndTime = endtime
+                agenda1.Duration = duration
+                agenda1.Agenda =agenda
+                 agenda1.Details =details
+                 agenda1.ClientParticipants =clientparticipants
+                 agenda1.TCSParticipants =tcsparticipants
+                agenda1.visit_id = params[:visit]
+                agenda1.save!
+                
+                @tid = agenda1.id
+            when "deleted"
+                agenda1=Agenda.find(@id)
+                agenda1.destroy
+                
+                @tid = @id
+            when "updated"
+                   agenda1=Agenda.find(@id)
+             agenda1.Date = date
+                agenda1.StartTime = starttime
+                agenda1.EndTime = endtime
+                agenda1.Duration = duration
+                agenda1.Agenda =agenda
+                 agenda1.Details =details
+                 agenda1.ClientParticipants =clientparticipants
+                 agenda1.TCSParticipants =tcsparticipants
+                agenda1.visit_id = params[:visit]
+                agenda1.save!
+                
+                @tid = @id
+        end 
+    end
   def index
   # @visits = Visit.all
  @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)

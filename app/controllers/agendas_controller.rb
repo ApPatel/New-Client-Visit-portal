@@ -1,6 +1,8 @@
 class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
+  
+
   def index
     @agendas = Agenda.all
 

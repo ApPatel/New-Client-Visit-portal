@@ -3,7 +3,7 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
   <%= stylesheet_link_tag "application", "colorbox", "bootstrap-responsive.min", "bootstrap.min", "jquery-ui-1.9.2.custom.min", :media => "all" %>
-  
+    <%= javascript_include_tag "application","app", "jquery.colorbox","jquery-ui-1.9.2.custom.min","dhtmlxcommon.js","dhtmlxgrid.js","dhtmlxgridcell.js","dhtmlxcalendar.js","dhtmlxgrid_excell_dhxcalendar.js","dhtmlxgrid_export.js" %>
 
 
 
@@ -44,7 +44,7 @@
     	<%= image_tag "icon-tata.png" %>
   	</footer>
 
- 	<%= javascript_include_tag "application","app", "jquery.colorbox","jquery-ui-1.9.2.custom.min"%>
+
 
 </body>
 </html>

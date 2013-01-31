@@ -1,8 +1,18 @@
 ClientVisit::Application.routes.draw do
   
-
+match "visit/agenda" => "visits#agenda", :as => :agenda
+        match "visit/data" => "visits#data", :as => :data
+                match "visit/dbaction" => "visits#dbaction", :as => :dbaction
   resources :agendas
-
+resources :visits do
+    collection do
+    
+      get :agenda
+      get :data
+      get :dbaction
+    end
+    resources :agendas
+   end
 
   get "user/new"
 
