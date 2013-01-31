@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Greetings, <%= @checklist.id %></h1>
+    <h2>===============================</h2>
+    <p>
+      Here is the list of checklist regarding Client Visit from <%= @checklist.visit_id %>.<br/>
+    </p>
+    <p>
+
+      Ground Transport requirement : <%= @checklist.ground_trans_check %>
+      Comment : <%= @checklist.ground_trans_text %>
+    </p>
+
+    <p>
+
+      Laptop Pass requirement : <%= @checklist.laptop_pass_check %>
+      Comment : <%= @checklist.laptop_pass_text %>
+    </p>
+
+
+    <p>
+
+      SEZ Pass requirement : <%= @checklist.sez_pass_check %>
+      Comment : <%= @checklist.sez_pass_text %>
+    </p>
+
+    <p>
+
+      TCS Visitors Pass requirement : <%= @checklist.tcs_visitor_pass_check %>
+      Comment : <%= @checklist.tcs_visitor_pass_text %>
+    </p>
+
+    <p>
+
+      ODC Access requirement : <%= @checklist.odc_access_check %>
+      Comment : <%= @checklist.odc_access_text %>
+    </p>
+
+
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

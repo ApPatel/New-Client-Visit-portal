@@ -1,0 +1,45 @@
+<h1>Listing checklists</h1>
+
+<table>
+  <tr>
+    <th>VISIT ID</th>
+    <th>Ground trans check</th>
+    <th>Ground trans text</th>
+    <th>Laptop pass check</th>
+    <th>Laptop pass text</th>
+    <th>Sez pass check</th>
+    <th>Sez pass text</th>
+    <th>Tcs visitor pass check</th>
+    <th>Tcs visitor pass text</th>
+    <th>Odc access check</th>
+    <th>Odc access text</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @checklists.each do |checklist| %>
+  <tr>
+    <td><%= checklist.visit_id %></td>
+    <td><%= checklist.ground_trans_check %></td>
+    <td><%= checklist.ground_trans_text %></td>
+    <td><%= checklist.laptop_pass_check %></td>
+    <td><%= checklist.laptop_pass_text %></td>
+    <td><%= checklist.sez_pass_check %></td>
+    <td><%= checklist.sez_pass_text %></td>
+    <td><%= checklist.tcs_visitor_pass_check %></td>
+    <td><%= checklist.tcs_visitor_pass_text %></td>
+    <td><%= checklist.odc_access_check %></td>
+    <td><%= checklist.odc_access_text %></td>
+    <td><%= checklist.email %></td>
+    <td><%= link_to 'Show', checklist %></td>
+    <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
+    <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Checklist', new_checklist_path %>
