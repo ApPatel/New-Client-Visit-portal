@@ -1,7 +1,7 @@
 class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
-  helper_method :sort_column, :sort_direction
+
     def agenda
      @visit =  Visit.find(params[:visit])  
       
@@ -95,7 +95,7 @@ class VisitsController < ApplicationController
     end
   def index
   # @visits = Visit.all
- @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+ @visits = Visit.all
  
   # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)
   #     respond_to do |format|
@@ -178,14 +178,6 @@ class VisitsController < ApplicationController
   end
 
   private
-  
-  def sort_column
-    Visit.column_names.include?(params[:sort]) ? params[:sort] : "Date"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
 
 
 
