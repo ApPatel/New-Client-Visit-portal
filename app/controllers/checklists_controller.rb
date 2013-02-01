@@ -35,7 +35,8 @@ class ChecklistsController < ApplicationController
 
   # GET /checklists/1/edit
   def edit
-    @checklist = Checklist.find(params[:id])
+        @visit = Visit.find_by_id(params[:visit_id])
+    @checklist = Checklist.find(params[:visit_id])
   end
 
 

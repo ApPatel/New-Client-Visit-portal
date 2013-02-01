@@ -1,5 +1,5 @@
 class Agenda < ActiveRecord::Base
-  attr_accessible :Agenda, :ClientParticipants, :Date, :Details, :Duration, :EndTime, :StartTime, :TCSParticipants,:visit_id
+  attr_accessible :agendadate,:timeduration,:StartTimeHour,:EndTimeHour,:Agenda, :ClientParticipants, :Date, :Details, :Duration, :EndTime, :StartTime, :TCSParticipants,:visit_id
 
 
 def self.to_csv(options = {})

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201061933) do
+ActiveRecord::Schema.define(:version => 20130201143047) do
 
   create_table "agendas", :force => true do |t|
     t.string   "Date"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(:version => 20130201061933) do
     t.integer  "visit_id"
     t.integer  "StartTimeMin"
     t.integer  "EndTimeMin"
+    t.integer  "StartTimeHour"
+    t.integer  "EndTimeHour"
+    t.integer  "visitdate"
+    t.string   "timeduration"
+    t.string   "agendadate"
   end
 
   create_table "checklists", :force => true do |t|

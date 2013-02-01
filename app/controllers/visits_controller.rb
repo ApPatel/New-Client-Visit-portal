@@ -38,17 +38,21 @@ class VisitsController < ApplicationController
         case @mode
             when "inserted"
                 agenda1 = Agenda.new
-                agenda1.Date = date
-                agenda1.StartTime = Integer(starthour)
+                agenda1.agendadate = date
+                agenda1.StartTimeHour = Integer(starthour)
                 agenda1.StartTimeMin = startmin.to_i
-                agenda1.EndTime = endhour.to_i
+                agenda1.EndTimeHour = endhour.to_i
                 agenda1.EndTimeMin = endmin.to_i
-                if (agenda1.EndTimeMin>agenda1.StartTimeMin) 
+                 if (agenda1.EndTimeMin>=agenda1.StartTimeMin) 
 
-                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+"#{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
-               
+                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
+
+                elsif (agenda1.EndTimeMin<agenda1.StartTimeMin && agenda1.EndTimeMin!=0 )
+                   agenda1.timeduration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
+
+                elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
+                  agenda1.timeduration="#{(agenda1.EndTime-agenda1.StartTime)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
                 end
-                
                 agenda1.Agenda =agenda
                 agenda1.Details =details
                 agenda1.ClientParticipants =clientparticipants
@@ -64,20 +68,20 @@ class VisitsController < ApplicationController
                 @tid = @id
             when "updated"
                 agenda1=Agenda.find(@id)
-                agenda1.Date = date
-              agenda1.StartTime = Integer(starthour)
+                agenda1.agendadate = date
+                agenda1.StartTimeHour = Integer(starthour)
                 agenda1.StartTimeMin = startmin.to_i
-                agenda1.EndTime = endhour.to_i
+                agenda1.EndTimeHour = endhour.to_i
                 agenda1.EndTimeMin = endmin.to_i
                 if (agenda1.EndTimeMin>=agenda1.StartTimeMin) 
 
-                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
+                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
 
                 elsif (agenda1.EndTimeMin<agenda1.StartTimeMin && agenda1.EndTimeMin!=0 )
-                   agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
+                   agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
 
                 elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
-                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
+                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
                 end
                 agenda1.Agenda =agenda
                 agenda1.Details =details
