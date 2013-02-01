@@ -11,6 +11,7 @@ class VisitsController < ApplicationController
    end
 
 
+
     def dbaction
         #called for all db actions
     
