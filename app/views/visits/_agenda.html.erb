@@ -7,7 +7,7 @@
     </head>
 
     <body>
-      <center>  <div id="grid_here" style="width:1200px; height:600px;">
+      <center>  <div id="grid_here" style="width:1150px; height:600px;">
         </div></center>
         <script type="text/javascript" charset="utf-8">
 
@@ -18,19 +18,22 @@
       var grid = new dhtmlXGridObject("grid_here");
             
             grid.setImagePath("");
-            grid.setHeader("Date,Start Time,End Time,Duration,Agenda,Details,Firm Participants,TCS Participants");
+            grid.setHeader("Date,Start Time,#cspan,End Time,#cspan,Duration,Agenda,Details,Firm Participants,TCS Participants");
+            grid.attachHeader(["#rspan", "HH", "MM", "HH", "MM", "#rspan","#rspan","#rspan","#rspan","#rspan"]);
             grid.enableMultiselect(true)
             grid.enableLightMouseNavigation(true);
-            grid.setInitWidths("100,100,100,100,200,200,200,200");
+            grid.setInitWidths("100,50,50,50,50,100,150,200,200,200");
             grid.setSkin("dhx_skyblue");
             grid.enableAutoHeight(true);
-                    grid.enableMultiline(true);
+            grid.enableMultiline(true);
         
-            grid.setColTypes("dhxCalendar,coro,coro,ro,txt,txt,txt,txt");
+            grid.setColTypes("dhxCalendar,coro,coro,coro,coro,ro,txt,txt,txt,txt");
 
             var combo1 = grid.getCombo(1); 
             var combo2 = grid.getCombo(2); 
-            combo2.put(0,"Select Start Time"); 
+            var combo3 = grid.getCombo(3); 
+            var combo4 = grid.getCombo(4); 
+             combo1.put(0,"0"); 
             combo1.put(7,"7"); 
             combo1.put(8,"8"); 
             combo1.put(9,"9"); 
@@ -43,19 +46,38 @@
             combo1.put(16,"16"); 
             combo1.put(17,"17"); 
             combo1.put(18,"18"); 
-            combo2.put(0,"Select End Time"); 
-             combo2.put(7,"7"); 
-            combo2.put(8,"8"); 
-            combo2.put(9,"9"); 
-            combo2.put(10,"10"); 
-            combo2.put(11,"11"); 
-            combo2.put(12,"12"); 
-            combo2.put(13,"13"); 
-            combo2.put(14,"14"); 
+            combo1.put(19,"19");
+            combo1.put(20,"20");
+            combo1.put(21,"21");
+    
+            combo2.put(0,"0"); 
             combo2.put(15,"15"); 
-            combo2.put(16,"16"); 
-            combo2.put(17,"17"); 
-            combo2.put(18,"18"); 
+            combo2.put(30,"30"); 
+            combo2.put(45,"45"); 
+            
+     
+            combo3.put(0,"0"); 
+            combo3.put(7,"7"); 
+            combo3.put(8,"8"); 
+            combo3.put(9,"9"); 
+            combo3.put(10,"10"); 
+            combo3.put(11,"11"); 
+            combo3.put(12,"12"); 
+            combo3.put(13,"13"); 
+            combo3.put(14,"14"); 
+            combo3.put(15,"15"); 
+            combo3.put(16,"16"); 
+            combo3.put(17,"17"); 
+            combo3.put(18,"18");  
+            combo3.put(19,"19");  
+            combo3.put(20,"20");
+            combo3.put(21,"21");  
+
+            combo4.put(0,"0"); 
+            combo4.put(15,"15"); 
+            combo4.put(30,"30"); 
+            combo4.put(45,"45"); 
+            
                     
             grid.init();
       
@@ -74,11 +96,11 @@ function getUrlVars() {
 }
 
         </script>
-       <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['Select Visit Date','Select Start Time','Select End Time','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
+       <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['Select Visit Date','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
         <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <input type="button" value="Export toExcel" onclick='grid.toExcel("http://dhtmlxgrid.appspot.com/export/excel");' class="btn" /></center></center>
 
    
-   
+
     </body>
 
 </html>

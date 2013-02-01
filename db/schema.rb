@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131120105) do
+ActiveRecord::Schema.define(:version => 20130131143049) do
 
   create_table "agendas", :force => true do |t|
     t.string   "Date"
-    t.time     "StartTime"
-    t.time     "EndTime"
-    t.time     "Duration"
+    t.integer  "StartTime"
+    t.integer  "EndTime"
+    t.string   "Duration"
     t.string   "Agenda"
     t.text     "Details"
     t.string   "ClientParticipants"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20130131120105) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "visit_id"
+    t.integer  "StartTimeMin"
+    t.integer  "EndTimeMin"
   end
 
   create_table "users", :force => true do |t|

@@ -2,43 +2,29 @@ class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
   helper_method :sort_column, :sort_direction
-  def agenda
-    p "helllllooooooooooooo inside agenda"
+    def agenda
      @visit =  Visit.find(params[:visit])  
-
-  end
-
-  def data
- p "helllllooooooooooooo inside data"
+    end
+ 
+    def data
      @agenda = Agenda.where(:visit_id=> params[:visit])
-
-   
    end
 
 
     def dbaction
         #called for all db actions
-      p "helllllooooooooooooo inside dbaction"
-      p params["c0"]
-      p params["c1"]
-      p params["c2"]
-      p params["c3"]
-      p params["c4"]
-      p params["c5"]
-      p params["c6"]
-      p params["c7"]
-          agenda = params["c4"]
+    
+    
           date = params["c0"]
-          Date.today.to_s
-          starttime   = params["c1"]
-      
-          endtime = params["c2"]
-          duration = params["c3"]
-        
-          details = params["c5"]
-     
-         clientparticipants   = params["c6"]
-          tcsparticipants= params["c7"]
+          starthour = params["c1"]
+          startmin =  params["c2"]
+          endhour = params["c3"]
+          endmin =  params["c4"]
+          duration = params["c5"]
+          agenda = params["c6"]
+          details = params["c7"]
+          clientparticipants   = params["c8"]
+          tcsparticipants= params["c9"]
           
 
         @mode = params["!nativeeditor_status"]
@@ -47,14 +33,21 @@ class VisitsController < ApplicationController
         case @mode
             when "inserted"
                 agenda1 = Agenda.new
-                agenda1.Date = "hii"
-                agenda1.StartTime = starttime
-                agenda1.EndTime = endtime
-                agenda1.Duration = duration
+                agenda1.Date = date
+                agenda1.StartTime = Integer(starthour)
+                agenda1.StartTimeMin = startmin.to_i
+                agenda1.EndTime = endhour.to_i
+                agenda1.EndTimeMin = endmin.to_i
+                if (agenda1.EndTimeMin>agenda1.StartTimeMin) 
+
+                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+"#{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
+               
+                end
+                
                 agenda1.Agenda =agenda
-                 agenda1.Details =details
-                 agenda1.ClientParticipants =clientparticipants
-                 agenda1.TCSParticipants =tcsparticipants
+                agenda1.Details =details
+                agenda1.ClientParticipants =clientparticipants
+                agenda1.TCSParticipants =tcsparticipants
                 agenda1.visit_id = params[:visit]
                 agenda1.save!
                 
@@ -65,15 +58,26 @@ class VisitsController < ApplicationController
                 
                 @tid = @id
             when "updated"
-                   agenda1=Agenda.find(@id)
-             agenda1.Date = date
-                agenda1.StartTime = starttime
-                agenda1.EndTime = endtime
-                agenda1.Duration = duration
+                agenda1=Agenda.find(@id)
+                agenda1.Date = date
+              agenda1.StartTime = Integer(starthour)
+                agenda1.StartTimeMin = startmin.to_i
+                agenda1.EndTime = endhour.to_i
+                agenda1.EndTimeMin = endmin.to_i
+                if (agenda1.EndTimeMin>=agenda1.StartTimeMin) 
+
+                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
+
+                elsif (agenda1.EndTimeMin<agenda1.StartTimeMin && agenda1.EndTimeMin!=0 )
+                   agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
+
+                elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
+                  agenda1.Duration="#{(agenda1.EndTime-agenda1.StartTime)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
+                end
                 agenda1.Agenda =agenda
-                 agenda1.Details =details
-                 agenda1.ClientParticipants =clientparticipants
-                 agenda1.TCSParticipants =tcsparticipants
+                agenda1.Details =details
+                agenda1.ClientParticipants =clientparticipants
+                agenda1.TCSParticipants =tcsparticipants
                 agenda1.visit_id = params[:visit]
                 agenda1.save!
                 
