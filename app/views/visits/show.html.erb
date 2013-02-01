@@ -1,50 +1,35 @@
   <div style=" min-height: 50px">
   </div>
-
+<h2>Visit Details </h2><br/>
 <div style="min-width: 960px; overflow:auto;">
     <table  id="show_table" >
       <thead>
      <tr>
        
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><font size="4"><b>Date </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Agenda Sheet </b></font></td>
-
-      </tr>
-      </thead>
-
-        <tr>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= @visit.Agenda %></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Description %></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Date %></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px "><%= @visit.Customers %></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), @visit.attachment.url)%></td>
-
-
+          <td style=" padding-right: 5px; padding-left: 5px; padding-bottom: 5px; min-width: 50px"><font size="3"><b>Agenda </b></font></td> <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= @visit.Agenda %></td></tr>
+          <tr><td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 150px "><font size="3"><b>Description </b></font></td>  <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Description %></td></tr>
+          <tr><td style=" padding-right: 5px; padding-left: 5px; padding-bottom: 5px;min-width: 100px "><font size="3"><b>Date </b></font></td>     <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @visit.Date %></td></tr>
+          <tr><td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 150px "><font size="3"><b>Customers </b></font></td> <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px "><%= @visit.Customers %></td></tr>
+         <tr> <td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 50px "><font size="3"><b>Agenda Sheet </b></font></td> <td style=" padding-right: 5px; padding-left: 5px; padding-bottom: 5px;min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), @visit.attachment.url)%></td></tr>
 
  
+      </thead>
 
-        </tr>
     </table>
   </div>
 
 
 
 
-  <div style=" min-height: 50px">
-  </div>
-
+  <br/>
  <%= link_to 'Make Agenda Sheet', agenda_visits_path(:visit => @visit.id), :class=> 'btn' %>
- <%= link_to 'Checklist',  new_visit_checklist_path(:visit_id => @visit.id), :class=> 'btn' %></br></br>
+ <%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => @visit.id), :class=> 'btn' %></br></br>
 
 
 
 
-  <%= image_tag("back-icon.png", :border => 0) %>
+ 
   <%= link_to 'Back', visits_path, :class=> 'btn' %>
-||
-  <%= image_tag("edit-big.png", :border => 0) %>
+
   <%= link_to 'Edit', edit_visit_path(@visit), :class=> 'btn' %>
 

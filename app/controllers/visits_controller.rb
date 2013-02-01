@@ -4,10 +4,14 @@ class VisitsController < ApplicationController
   helper_method :sort_column, :sort_direction
     def agenda
      @visit =  Visit.find(params[:visit])  
+      
     end
  
     def data
      @agenda = Agenda.where(:visit_id=> params[:visit])
+
+
+   
    end
 
 

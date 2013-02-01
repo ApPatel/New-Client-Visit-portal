@@ -1,0 +1,35 @@
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Start Time Hour</th>
+    <th>Start Time Minute</th>
+     <th>End Time Hour</th>
+    <th>End Time Minute</th>
+    <th>Agenda </th>
+    <th>Duration</th>
+    <th>Details</th>
+    <th>Firm Participants</th>
+    <th>TCS participants</th>
+ 
+  </tr>
+<% @visit.id %>
+<% @agenda= Agenda.where(:visit_id=>@visit.id) %>
+<% @agenda.each do |user| %>
+  <tr>
+    <td><%= user.Date %></td>
+    <td><%= user.StartTime %></td>
+    <td><%= user.StartTimeMin %></td>
+    <td><%= user.EndTime %></td>
+    <td><%= user.EndTimeMin %></td>
+     <td><%= user.Duration %></td>
+    <td><%= user.Agenda %></td>
+    <td><%= user.Details %></td>
+    <td><%= user.ClientParticipants %></td>
+    <td><%= user.TCSParticipants %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

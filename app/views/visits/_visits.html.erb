@@ -1,7 +1,7 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 
-
+<%= link_to 'Export XLS', url_for(:format => 'xls') %>
 <div style='min-height:200px'>
     <table  id="index_table" class="pretty">
      <thead> 
@@ -11,8 +11,11 @@
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
           <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b><%= sortable "Date"%></b></font></th>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Agenda Sheet </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Destroy </b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Attached File</b></font></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Agenda Sheet </b></font></td>
+           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Checklist </b></font></td>
+           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Destroy </b></font></td>
+
 
       </tr>
      </thead>
@@ -30,6 +33,8 @@
         <% else %>
             <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), visit.attachment.url)%></td>
         <% end %>
+         <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Make Agenda Sheet', agenda_visits_path(:visit => visit.id), :class=> 'btn' %></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => visit.id), :class=> 'btn' %></td>
 
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><b><%= link_to(image_tag("destroy.png", :border => 0), visit, confirm: 'Are you sure?', method: :delete )%></b></td>
       </tr>       

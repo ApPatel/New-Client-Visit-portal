@@ -5,9 +5,14 @@
     <head>
 
     </head>
-
+ 
     <body>
-      <center>  <div id="grid_here" style="width:1150px; height:600px;">
+       <center><h2>Agenda Sheet</h2></center>   <%= link_to 'Back', visits_path, :class=> 'btn' %>  <br/>
+
+
+<br/>
+       <center>  <div id="grid_here" style="width:1150px; height:600px;">
+
         </div></center>
         <script type="text/javascript" charset="utf-8">
 
@@ -97,10 +102,11 @@ function getUrlVars() {
 
         </script>
        <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['Select Visit Date','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
-        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <input type="button" value="Export toExcel" onclick='grid.toExcel("http://dhtmlxgrid.appspot.com/export/excel");' class="btn" /></center></center>
+        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <%= link_to 'Export as Excel', url_for(:format => 'xls',:visit => params[:visit]) , :class => "btn" %></center></center>
 
    
 
     </body>
 
 </html>
+
