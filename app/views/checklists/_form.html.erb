@@ -1,0 +1,113 @@
+<%= form_for(@checklist) do |f| %>
+  <% if @checklist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
+
+      <ul>
+      <% @checklist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div style="height: 50px">
+</div>
+
+<div class="well span6">
+  <table>
+    <tr>
+      <td>
+        <font size="3px">Ground Transport :</font>
+      </td>
+      <td>
+            <%= f.check_box(:ground_trans_check) %>
+            <%= f.text_area :ground_trans_text, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+    <tr>
+      <td>
+        <font size="3px">Laptop Pass :</font>
+      </td>
+      <td>
+            <%= f.check_box(:laptop_pass_check) %>
+            <%= f.text_area :laptop_pass_text, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+    <tr>
+      <td>
+        <font size="3px">SEZ Pass         :</font>
+      </td>
+      <td>
+            <%= f.check_box(:sez_pass_check) %>
+            <%= f.text_area :sez_pass_text, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+    <tr>
+      <td>
+        <font size="3px">TCS Visitor Pass :</font>
+      </td>
+      <td>
+            <%= f.check_box(:tcs_visitor_pass_check)%>
+            <%= f.text_area :tcs_visitor_pass_text, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+    <tr>
+      <td>
+        <font size="3px">ODC Access       :</font>
+      </td>
+      <td>
+            <%= f.check_box(:odc_access_check) %>
+            <%= f.text_area :odc_access_text, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+
+            <%= hidden_field_tag :visit_id, @visit.id %>
+
+
+    <tr>
+      <td>
+        <font size="3px">E-Mail to        :</font>
+
+      </td>
+      <td>
+            &nbsp&nbsp&nbsp
+            <%= f.text_area :email, :rows=>1, :cols=>50 %></br>
+      </td>
+        
+    </tr>
+
+
+
+
+  </table>  
+
+  
+
+ 
+
+<div style="height: 50px">
+</div>
+
+<div>  <%= f.submit "Save & Show", :class=> 'btn btn-primary' %></div>
+
+</div>
+
+<% end %>
+
+<div class="span9">
+  <%= image_tag("back-icon.png", :border => 0) %>
+  <%= link_to 'Back', visit_path(@visit), :class=> 'btn' %>
+</div>
+
+
