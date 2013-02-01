@@ -18,12 +18,12 @@
 <% @agenda= Agenda.where(:visit_id=>@visit.id) %>
 <% @agenda.each do |user| %>
   <tr>
-    <td><%= user.Date %></td>
-    <td><%= user.StartTime %></td>
+    <td><%= user.visitdate %></td>
+    <td><%= user.StartTimeHour %></td>
     <td><%= user.StartTimeMin %></td>
-    <td><%= user.EndTime %></td>
+    <td><%= user.EndTimeHour %></td>
     <td><%= user.EndTimeMin %></td>
-     <td><%= user.Duration %></td>
+     <td><%= user.timeduration %></td>
     <td><%= user.Agenda %></td>
     <td><%= user.Details %></td>
     <td><%= user.ClientParticipants %></td>
