@@ -13,8 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-
+//= require app
+//= require jquery.colorbox
+//= require jquery-ui-1.9.2.custom.min
+//= require dhtmlxcommon
+//= require dhtmlxgrid
+//= require dhtmlxgridcell
+//= require dhtmlxcalendar
+//= require dhtmlxgrid_excell_dhxcalendar
+//= require dhtmlxgrid_export
 
 
 $(function(){

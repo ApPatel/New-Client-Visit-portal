@@ -2,8 +2,8 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
-  <%= stylesheet_link_tag "application" ,:media => "all" %>
-    <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application", "colorbox", "bootstrap-responsive.min", "bootstrap.min", "jquery-ui-1.9.2.custom.min","dhtmlxcalendar","dhtmlxcalendar_dhx_skyblue","dhtmlxgrid","dhtmlxgrid_dhx_skyblue", :media => "all" %>
+    <%= javascript_include_tag "application", "jquery.colorbox","jquery-ui-1.9.2.custom.min","dhtmlxcommon","dhtmlxgrid","dhtmlxgridcell","dhtmlxcalendar","dhtmlxgrid_excell_dhxcalendar","dhtmlxgrid_export.js" %>
 
 
 
