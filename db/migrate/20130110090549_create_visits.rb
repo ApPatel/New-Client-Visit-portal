@@ -3,7 +3,7 @@ class CreateVisits < ActiveRecord::Migration
     create_table :visits do |t|
       t.string :Agenda
       t.string :Description
-      t.date :Date
+      t.string :Date
       t.string :Customers
 
       t.timestamps
