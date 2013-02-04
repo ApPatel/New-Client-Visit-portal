@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<%= javascript_include_tag :defaults %>
 <html>
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
   <%= stylesheet_link_tag "application", :media => "all" %>
      <%= javascript_include_tag "application","dhtmlxcommon.js,","dhtmlxgrid.js","dhtmlxgridcell.js","dhtmlxcalendar.js","dhtmlxgrid_excell_dhxcalendar.js" %>
 
-
+  <%= csrf_meta_tags %>
 
     <style>
       ul.nav li.dropdown:hover ul.dropdown-menu{
