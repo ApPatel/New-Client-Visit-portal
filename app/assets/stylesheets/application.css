@@ -10,15 +10,7 @@
  *
  *= require_self
  *= require_tree .
- *= require colorbox
- *= require bootstrap-responsive.min
- *= require bootstrap.min
- *= require jquery-ui-1.9.2.custom.min
- *= require dhtmlxcalendar
 
- *= require dhtmlxcalendar_dhx_skyblue
- *= require dhtmlxgrid
- *= require dhtmlxgrid_dhx_skyblue
 */
 body {
   background-color: #4B7399;
