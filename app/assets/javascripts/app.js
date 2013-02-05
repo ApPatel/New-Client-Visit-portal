@@ -46,7 +46,7 @@ $(function() {
 
 
 $(function() {
-  $("#visits thead, #visits .pagination").on("click", "a", function() {
+  $("#visits th a, #visits .pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });

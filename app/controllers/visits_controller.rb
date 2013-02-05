@@ -103,8 +103,8 @@ class VisitsController < ApplicationController
         end 
     end
   def index
-   @visits = Visit.all
- #@visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+ #  @visits = Visit.all
+ @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
  
   # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)
   #     respond_to do |format|
