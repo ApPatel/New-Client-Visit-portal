@@ -4,6 +4,15 @@ class VisitsController < ApplicationController
   helper_method :sort_column, :sort_direction
     def agenda
      @visit =  Visit.find(params[:visit])  
+     @agenda = Agenda.where(:visit_id=> params[:visit])
+     time1 = Time.new
+     time1.strftime("%Y-%m-%d %H:%M:%S")
+     p time1
+      respond_to do |format|
+      format.html
+      format.csv { send_data @agenda.to_csv }
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{@visit.Agenda}"+"#{time1}"+".xls"}
+    end
       
     end
  
@@ -103,8 +112,8 @@ class VisitsController < ApplicationController
         end 
     end
   def index
- #  @visits = Visit.all
- @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+   @visits = Visit.all
+ #@visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
  
   # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)
   #     respond_to do |format|

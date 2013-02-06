@@ -1,7 +1,7 @@
 class Agenda < ActiveRecord::Base
   attr_accessible :agendadate,:timeduration,:StartTimeHour,:EndTimeHour,:Agenda, :ClientParticipants, :Date, :Details, :TCSParticipants,:visit_id
 
-
+belongs_to :visit
 def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

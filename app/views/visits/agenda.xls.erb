@@ -1,6 +1,6 @@
 
 
-<table>
+<table border="1">
   <tr>
     <th>Date</th>
     <th>Start Time Hour</th>
@@ -18,7 +18,7 @@
 <% @agenda= Agenda.where(:visit_id=>@visit.id) %>
 <% @agenda.each do |user| %>
   <tr>
-    <td><%= user.visitdate %></td>
+    <td><%= user.agendadate %></td>
     <td><%= user.StartTimeHour %></td>
     <td><%= user.StartTimeMin %></td>
     <td><%= user.EndTimeHour %></td>

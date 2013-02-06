@@ -1,6 +1,6 @@
 ClientVisit::Application.routes.draw do
   
-  resources :checklists
+
 
 
 match "visit/agenda" => "visits#agenda", :as => :agenda
@@ -24,6 +24,10 @@ resources :visits do
       get :dbaction
     end
     resources :agendas
+    resources :checklists
+   end
+resources :visits do
+  
     resources :checklists
    end
 

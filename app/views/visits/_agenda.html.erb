@@ -22,6 +22,7 @@
 
       var grid = new dhtmlXGridObject("grid_here");
             
+              
             grid.setImagePath("");
             grid.setHeader("Date,Start Time,#cspan,End Time,#cspan,Duration,Agenda,Details,Firm Participants,TCS Participants");
             grid.attachHeader(["#rspan", "HH", "MM", "HH", "MM", "#rspan","#rspan","#rspan","#rspan","#rspan"]);
@@ -31,13 +32,14 @@
             grid.setSkin("dhx_skyblue");
             grid.enableAutoHeight(true);
             grid.enableMultiline(true);
-        
+            grid.enableEditEvents(true,false,false);
             grid.setColTypes("dhxCalendar,coro,coro,coro,coro,ro,txt,txt,txt,txt");
 
             var combo1 = grid.getCombo(1); 
             var combo2 = grid.getCombo(2); 
             var combo3 = grid.getCombo(3); 
             var combo4 = grid.getCombo(4); 
+
              combo1.put(0,"0"); 
             combo1.put(7,"7"); 
             combo1.put(8,"8"); 
@@ -82,15 +84,50 @@
             combo4.put(15,"15"); 
             combo4.put(30,"30"); 
             combo4.put(45,"45"); 
-            
+
                     
             grid.init();
       
-            grid.load("/visit/data?visit="+deco);
-            dp = new dataProcessor("/visit/dbaction?visit="+deco);
+            grid.load("/visit/data?visit="+deco)
+
+grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
+    if (stage==1 &&  this.editor &&  this.editor.obj){
+        this.editor.obj.select();
+    }
+    return true;
+    });
+           
+       dp = new dataProcessor("/visit/dbaction?visit="+deco);
             dp.init(grid);
 
-         
+      grid.attachEvent("onEditCell",function(stage,id,ind,value){
+    if (stage == 2 && (ind ==1 || ind == 2 || ind ==3 || ind == 4) ){
+          //this code will be executed when edit operation finished in column with index 1
+               StartTimeHour= parseInt(grid.cellById(id,1).getValue());
+               StartTimeMin= parseInt(grid.cellById(id,2).getValue());
+               EndTimeHour= parseInt(grid.cellById(id,3).getValue());
+               
+               EndTimeMin= parseInt(grid.cellById(id,4).getValue());
+
+ alert(EndTimeHour)
+  alert(StartTimeHour)
+               
+             if ((EndTimeHour >= StartTimeHour) && (EndTimeMin>=StartTimeMin) )
+
+                  timeduration=(EndTimeHour-StartTimeHour) +"hr(s)"+(EndTimeMin-StartTimeMin)+" mins"
+
+            else if ((EndTimeHour >= StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
+                   timeduration=(EndTimeHour-StartTimeHour)+" hr(s)"+(StartTimeMin-EndTimeMin)+" mins"
+
+            else if ( (EndTimeHour >= StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
+                  timeduration=(EndTimeHour-StartTimeHour-1)+" hr(s)"+(60-StartTimeMin)+" mins"
+     
+   grid.cells(id,5).setValue(timeduration);
+      
+          
+    }
+    return true;
+});
             
 function getUrlVars() {
     var vars = {};
@@ -101,8 +138,17 @@ function getUrlVars() {
 }
 
         </script>
-       <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['22/10/2012','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
-        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <%= link_to 'Export as Excel', url_for(:format => 'xls',:visit => params[:visit]) , :class => "btn" %></center></center>
+        <% @visit=Visit.find(params[:visit]) %>
+     
+       <center> 
+       <%= submit_tag "Add", :type => 'button', :onclick => "grid.addRow(grid.uid(),['#{@visit.Date}','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" ,:class => "btn" %>
+        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn"> 
+
+
+
+
+         <%= link_to 'Export as Excel', url_for(:format => 'xls' ,:filename=> 'your_file_name.xls', :visit => params[:visit]) , :class => "btn" %></center></center>
+
 
    
 
