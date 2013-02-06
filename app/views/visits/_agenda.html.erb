@@ -84,14 +84,14 @@
             combo4.put(15,"15"); 
             combo4.put(30,"30"); 
             combo4.put(45,"45"); 
-            
+
                     
             grid.init();
       
             grid.load("/visit/data?visit="+deco)
 
 grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
-    if (stage==1){
+    if (stage==1 &&  this.editor &&  this.editor.obj){
         this.editor.obj.select();
     }
     return true;
@@ -100,7 +100,34 @@ grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
        dp = new dataProcessor("/visit/dbaction?visit="+deco);
             dp.init(grid);
 
+      grid.attachEvent("onEditCell",function(stage,id,ind,value){
+    if (stage == 2 && (ind ==1 || ind == 2 || ind ==3 || ind == 4) ){
+          //this code will be executed when edit operation finished in column with index 1
+               StartTimeHour= parseInt(grid.cellById(id,1).getValue());
+               StartTimeMin= parseInt(grid.cellById(id,2).getValue());
+               EndTimeHour= parseInt(grid.cellById(id,3).getValue());
+               
+               EndTimeMin= parseInt(grid.cellById(id,4).getValue());
+
+ alert(EndTimeHour)
+  alert(StartTimeHour)
+               
+             if ((EndTimeHour >= StartTimeHour) && (EndTimeMin>=StartTimeMin) )
+
+                  timeduration=(EndTimeHour-StartTimeHour) +"hr(s)"+(EndTimeMin-StartTimeMin)+" mins"
+
+            else if ((EndTimeHour >= StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
+                   timeduration=(EndTimeHour-StartTimeHour)+" hr(s)"+(StartTimeMin-EndTimeMin)+" mins"
+
+            else if ( (EndTimeHour >= StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
+                  timeduration=(EndTimeHour-StartTimeHour-1)+" hr(s)"+(60-StartTimeMin)+" mins"
+     
+   grid.cells(id,5).setValue(timeduration);
       
+          
+    }
+    return true;
+});
             
 function getUrlVars() {
     var vars = {};

@@ -6,12 +6,12 @@ class VisitsController < ApplicationController
      @visit =  Visit.find(params[:visit])  
      @agenda = Agenda.where(:visit_id=> params[:visit])
      time1 = Time.new
-     time1=time1.strftime("%Y-%m-%d %H:%M:%S")
+     time1.strftime("%Y-%m-%d %H:%M:%S")
      p time1
       respond_to do |format|
       format.html
       format.csv { send_data @agenda.to_csv }
-      format.xls { send_data @agenda.to_csv(col_sep: "\t"), filename: "#{@visit.Agenda}"+"#{time1}"+".xls"}
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{@visit.Agenda}"+"#{time1}"+".xls"}
     end
       
     end

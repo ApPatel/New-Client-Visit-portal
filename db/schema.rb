@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20130201143047) do
 
   create_table "agendas", :force => true do |t|
-    t.string   "Date"
-    t.integer  "StartTime"
-    t.integer  "EndTime"
-    t.string   "Duration"
+    t.date     "Date"
+    t.time     "StartTime"
+    t.time     "EndTime"
+    t.time     "Duration"
     t.string   "Agenda"
     t.text     "Details"
     t.string   "ClientParticipants"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130201143047) do
   create_table "visits", :force => true do |t|
     t.string   "Agenda"
     t.string   "Description"
-    t.date     "Date"
+    t.string   "Date"
     t.string   "Customers"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false

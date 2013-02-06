@@ -4,7 +4,11 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Client Visit Portal" %></title>
  <%= stylesheet_link_tag  "application","dhtmlxgrid","dhtmlxcalendar","dhtmlxcalendar_dhx_skyblue","dhtmlxgrid_dhx_skyblue" ,:media => "all" %>
+
   <%= javascript_include_tag "application","dhtmlxcommon.js","dhtmlxgridcell.js","dhtmlxgrid.js","dhtmlxcalendar.js","dhtmlxgrid_excell_dhxcalendar.js" %>
+=======
+  
+>>>>>>> 4041a0ed784306a50062116fc7ba64fcbe8560bb
   <%= csrf_meta_tags %>
 
 
@@ -47,6 +51,6 @@
   	</footer>
 
 
-
+<%= javascript_include_tag "application","dhtmlxcommon.js", "jquery.colorbox", "app", "dhtmlxgridcell.js","dhtmlxgrid.js","dhtmlxcalendar.js","dhtmlxgrid_excell_dhxcalendar.js" %>
 </body>
 </html>
