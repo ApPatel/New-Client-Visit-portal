@@ -1,7 +1,7 @@
 class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
-  helper_method :sort_column, :sort_direction
+ 
     def agenda
      @visit =  Visit.find(params[:visit])  
      @agenda = Agenda.where(:visit_id=> params[:visit])
@@ -11,7 +11,7 @@ class VisitsController < ApplicationController
       respond_to do |format|
       format.html
       format.csv { send_data @agenda.to_csv }
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{@visit.Agenda}"+"#{time1}"+".xls"}
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{@visit.Agenda}_"+"#{time1}"+".xls"}
     end
       
     end
@@ -112,8 +112,8 @@ class VisitsController < ApplicationController
         end 
     end
   def index
-   #@visits = Visit.all
- @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(5)
+ @visits = Visit.all
+# @visits = Visit.search(params[:search]).page(params[:page]).per(5)
  
   # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)
   #     respond_to do |format|
@@ -194,17 +194,6 @@ class VisitsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  private
-  
-  def sort_column
-    Visit.column_names.include?(params[:sort]) ? params[:sort] : "Date"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
 
 
 end

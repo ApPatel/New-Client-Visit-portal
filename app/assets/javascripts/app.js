@@ -56,8 +56,14 @@ $(function() {
             return false;
   });
 
+
  $(" #deactivate_User_List, #reactivate_User_List").multiselect({
         searchable: true
     });
 
+});
+
+
+$(document).ready(function(){
+    $('#index_table').dataTable();
 });
