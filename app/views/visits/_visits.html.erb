@@ -1,5 +1,4 @@
-<%= hidden_field_tag :direction, params[:direction] %>
-<%= hidden_field_tag :sort, params[:sort] %>
+
 
 
 <div style='min-height:200px'>
@@ -9,7 +8,7 @@
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 30px"><font size="4"><b>ID </b></font></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
-          <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b><%= sortable "Date" %></b></font></th>
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Date</b></font></th>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Attached File</b></font></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Agenda Sheet </b></font></td>
@@ -45,5 +44,5 @@
 
   </div>
   <div align='center'>
-    <%= paginate @visits%>
+
 </div>
