@@ -1,0 +1,79 @@
+<head>
+<h2>Manage User</h2>
+</head>
+<body>
+
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Add New User</a></li>
+      <li><a href="#tab2" data-toggle="tab">Deactivate User</a></li>
+      <li><a href="#tab3" data-toggle="tab">Re-activate User</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+
+      <div class="tab-pane active" id="tab1">
+        <h1> Add New User </h1>
+         <%= form_for @user, :url => user_index_path do |f| %>
+          <div><br><b><font size="3px">Email</b></font><br>
+            <%= f.text_field :email %></div><br>
+
+          <div><b><font size="3px">Password </b></font><br>
+            <%= f.password_field :password, :autocomplete => "off" %></div><br>
+
+          <div><b><font size="3px">Confirm Password</b></font><br>
+            <%= f.password_field :password_confirmation %></div><br>
+
+          <div><b><font size="3px">Role</b></font><br>
+          <b><%= f.radio_button :role , 'Member',:checked => true %> Member
+            <br><%= f.radio_button :role, 'Admin'%> Admin
+          </b>
+         </div><br>
+         <br>
+
+          <div><%= f.submit "Save", :class=> 'btn btn-primary' %></div> <%end%>
+
+      </div>
+
+
+      <div class="tab-pane" id="tab2">
+          <%=render :partial => "deactivateUser"%>
+      </div>
+
+      <div class="tab-pane" id="tab3">
+          <%=render :partial => "reactivateUser"%>
+      </div>
+
+
+    </div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
