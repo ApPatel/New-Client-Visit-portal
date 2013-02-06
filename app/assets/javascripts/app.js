@@ -57,10 +57,6 @@ $(function() {
   });
 
 
- $(" #deactivate_User_List, #reactivate_User_List").multiselect({
-        searchable: true
-    });
-
 });
 
 
