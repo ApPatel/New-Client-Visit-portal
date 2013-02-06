@@ -9,13 +9,6 @@ match "visit/agenda" => "visits#agenda", :as => :agenda
 resources :agendas
 
 
-resources :user, :controller => "user"
-resource :user, :controller => "user" do
-    member do
-      post 'manageUser'
-    end
-  end
-
 resources :visits do
     collection do
     
@@ -26,7 +19,7 @@ resources :visits do
     resources :agendas
    end
 
-   
+
 resources :visits do
   
     resources :checklists
@@ -43,6 +36,8 @@ resources :visits do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   devise_for :users
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
