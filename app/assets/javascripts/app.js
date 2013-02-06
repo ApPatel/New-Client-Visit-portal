@@ -56,3 +56,8 @@ $(function() {
 
 
 });
+
+
+$(document).ready(function(){
+    $('#index_table').dataTable();
+});

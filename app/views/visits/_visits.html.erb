@@ -5,23 +5,23 @@
     <table  id="index_table" class="pretty">
      <thead> 
       <tr>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 30px"><font size="4"><b>ID </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></td>
+       
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><font size="4"><b>Agenda </b></font></th>
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Description </b></font></th>
           <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Date</b></font></th>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Attached File</b></font></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Agenda Sheet </b></font></td>
-           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Checklist </b></font></td>
-           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Destroy </b></font></td>
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><font size="4"><b>Customers </b></font></th>
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="4"><b>Attached File</b></font></th>
+          <th style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Agenda Sheet </b></font></th>
+           <th style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Checklist </b></font></th>
+           <th style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><font size="2"><b>Destroy </b></font></th>
 
 
       </tr>
      </thead>
-      
+      <tbody>
    <% @visits.each do |visit| %>
       <tr>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 30px"><%= visit.id %></td>
+          
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= link_to visit.Agenda, visit %></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= visit.Description %></td>
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><%= visit.Date %></td>
@@ -40,6 +40,7 @@
 
 
         <% end %>
+      </tbody>
     </table>
 
   </div>

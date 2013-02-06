@@ -115,12 +115,14 @@ grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
 
                   timeduration=(EndTimeHour-StartTimeHour) +"hr(s)"+(EndTimeMin-StartTimeMin)+" mins"
 
-            else if ((EndTimeHour >= StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
+           if ((EndTimeHour >= StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
                    timeduration=(EndTimeHour-StartTimeHour)+" hr(s)"+(StartTimeMin-EndTimeMin)+" mins"
 
-            else if ( (EndTimeHour >= StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
+             if ( (EndTimeHour >= StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
                   timeduration=(EndTimeHour-StartTimeHour-1)+" hr(s)"+(60-StartTimeMin)+" mins"
-     
+
+               if (EndTimeHour < StartTimeHour) 
+                timeduration="Invalid Start and End time"
    grid.cells(id,5).setValue(timeduration);
       
           
