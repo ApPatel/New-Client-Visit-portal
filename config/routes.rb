@@ -24,8 +24,9 @@ resources :visits do
       get :dbaction
     end
     resources :agendas
-    resources :checklists
    end
+
+   
 resources :visits do
   
     resources :checklists
