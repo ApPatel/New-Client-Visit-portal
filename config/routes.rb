@@ -9,6 +9,12 @@ match "visit/agenda" => "visits#agenda", :as => :agenda
 resources :agendas
 
 
+resources :user, :controller => "user"
+resource :user, :controller => "user" do
+    member do
+      post 'manageUser'
+    end
+  end
 
 resources :visits do
     collection do

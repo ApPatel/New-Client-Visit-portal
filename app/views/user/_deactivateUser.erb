@@ -1,0 +1,23 @@
+<%= form_tag manageUser_user_url, :method => 'post'%>
+
+<div style="margin-left: 20px "><b>
+
+  <%= label_tag(:deactivate_User_List, "Select Users you want to De-Activate :") %></b>
+
+  <div style="height: 10px">
+  </div>
+
+  <%= select_tag "deactivate_User_List",
+    options_for_select(@current_users.collect{|user| [user.email, user.email]}),
+    {:multiple => true, :class => "span5" } %>
+
+
+  <div style="height: 50px">
+  </div>
+
+  <%= submit_tag(:Submit,:name=>"deactivate_user_submit", :id=> "deactivate_user_submit", :class=> 'btn btn-primary')%>
+
+</div>
+
+
+

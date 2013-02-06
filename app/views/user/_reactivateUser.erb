@@ -1,0 +1,19 @@
+<%= form_tag manageUser_user_url, :method => 'post'%>
+
+<div style="margin-left: 20px "><b>
+    <%= label_tag(:reactivate_User_List, "Select Users you want to Re-Activate :") %></b>
+
+  <div style="height: 10px">
+  </div>
+
+  <%= select_tag "reactivate_User_List",
+    options_for_select(@deactivated_users.collect{|user| [user.email, user.email]}),
+    {:multiple => true, :class => "span5" } %>
+
+  <div style="height: 50px">
+  </div>
+
+  <%= submit_tag(:Submit, :name=>"reactivate_user_submit", :id=> "reactivate_user_submit", :class=> 'btn btn-primary')%>
+
+</div>
+
