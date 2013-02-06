@@ -22,6 +22,7 @@
 
       var grid = new dhtmlXGridObject("grid_here");
             
+              
             grid.setImagePath("");
             grid.setHeader("Date,Start Time,#cspan,End Time,#cspan,Duration,Agenda,Details,Firm Participants,TCS Participants");
             grid.attachHeader(["#rspan", "HH", "MM", "HH", "MM", "#rspan","#rspan","#rspan","#rspan","#rspan"]);
@@ -31,13 +32,14 @@
             grid.setSkin("dhx_skyblue");
             grid.enableAutoHeight(true);
             grid.enableMultiline(true);
-        
+            grid.enableEditEvents(true,false,false);
             grid.setColTypes("dhxCalendar,coro,coro,coro,coro,ro,txt,txt,txt,txt");
 
             var combo1 = grid.getCombo(1); 
             var combo2 = grid.getCombo(2); 
             var combo3 = grid.getCombo(3); 
             var combo4 = grid.getCombo(4); 
+
              combo1.put(0,"0"); 
             combo1.put(7,"7"); 
             combo1.put(8,"8"); 
@@ -86,11 +88,19 @@
                     
             grid.init();
       
-            grid.load("/visit/data?visit="+deco);
-            dp = new dataProcessor("/visit/dbaction?visit="+deco);
+            grid.load("/visit/data?visit="+deco)
+
+grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
+    if (stage==1){
+        this.editor.obj.select();
+    }
+    return true;
+    });
+           
+       dp = new dataProcessor("/visit/dbaction?visit="+deco);
             dp.init(grid);
 
-         
+      
             
 function getUrlVars() {
     var vars = {};
@@ -101,8 +111,17 @@ function getUrlVars() {
 }
 
         </script>
-       <center> <input type="button" value="Add" onclick="grid.addRow(grid.uid(),['22/10/2012','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" class="btn">
-        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn">  <%= link_to 'Export as Excel', url_for(:format => 'xls',:visit => params[:visit]) , :class => "btn" %></center></center>
+        <% @visit=Visit.find(params[:visit]) %>
+     
+       <center> 
+       <%= submit_tag "Add", :type => 'button', :onclick => "grid.addRow(grid.uid(),['#{@visit.Date}','0','0','0','0','0','Click to add agenda','Click to add details','Click to add FIRM participants','Click to add TCS participants'])" ,:class => "btn" %>
+        <input type="button" value="Delete" onclick="grid.deleteSelectedRows()" class="btn"> 
+
+
+
+
+         <%= link_to 'Export as Excel', url_for(:format => 'xls' ,:filename=> 'your_file_name.xls', :visit => params[:visit]) , :class => "btn" %></center></center>
+
 
    
 
