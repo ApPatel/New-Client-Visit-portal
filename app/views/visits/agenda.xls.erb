@@ -1,6 +1,16 @@
 
 
-<table border="1">
+<center><table border="1" width="400">
+  <tr><td colspan="2" bgcolor="#81BEF7"><h3><center>Visit Details</h3></center></td></tr>
+  <tr>
+    <td><b>Visit Agenda</b></td><td><%= @visit.Agenda %></td></tr>
+ <tr><td><b>Visit Description</b></b></td><td><%= @visit.Description %></td></tr>
+ <tr><td><b>Visit Date</b></td><td><%= @visit.Date %></td></tr>
+ <tr><td><b>Customers</b></td><td><%= @visit.Customers %></td></tr>
+  </tr></table></center>
+  <table border="1">
+          <tr><td colspan="10" ></td></tr>
+      <tr><td colspan="10" bgcolor="#81BEF7"><h3><center>Agenda Sheet</center><h3></td></tr>
   <tr>
     <th>Date</th>
     <th>Start Time Hour</th>
@@ -14,7 +24,7 @@
     <th>TCS participants</th>
  
   </tr>
-<% @visit.id %>
+
 <% @agenda= Agenda.where(:visit_id=>@visit.id) %>
 <% @agenda.each do |user| %>
   <tr>
