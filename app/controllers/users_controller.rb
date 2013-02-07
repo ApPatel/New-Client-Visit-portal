@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   
   def new
     @user = User.new
@@ -53,40 +53,33 @@ class UserController < ApplicationController
 
   # GET /users/1/edit
   def edit
-        
-    @user = User.find(params[:id])
-    puts params[:id]
-    puts "*******************************EDIT---new**********************************************"
-    puts @user.Status + "*****" + @user.email
-    puts "*******************************EDIT**********************************************"
-
-
+      @user= User.find(params[:id])
   end
 
+def update
+  @user = User.find(params[:id])
+  
+  if @user.update_attributes(params[:user])
+            flash[:notice] = "Successfully Updated User."
+            redirect_to users_path
+         else
+            flash[:notice] = "User Could Not Be Updated."
+            render :action => :edit
+        end
+end
 
-  def update
- puts "*****************************************************************************"
-    puts params[:id] 
 
-    puts "*****************************************************************************"
-    @user = User.find(params[:id])
+     
 
 
-    puts "*****************************************************************************"
-    puts @user.Status + "*****" + @user.email
-    puts "*****************************************************************************"
 
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
+    #@user = User.find(params[:id])
+    #puts params[:id]
+    #puts "*******************************EDIT---new**********************************************"
+    #puts @user.Status + "*****" + @user.email
+    #puts "*******************************EDIT**********************************************"
 
   # DELETE /users/1
   # DELETE /users/1.json

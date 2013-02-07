@@ -32,7 +32,7 @@
 
                         <%  if current_user.role.to_s.downcase=='admin'%>
 
-                        <li><%= link_to 'Manage User', user_index_path %></li>
+                        <li><%= link_to 'Manage User', users_path %></li>
                         <li class="divider"></li>
                         
                         <% end %>

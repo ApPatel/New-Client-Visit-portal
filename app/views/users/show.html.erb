@@ -1,0 +1,25 @@
+<div style=" min-height: 50px">
+  </div>
+<h2>Visit Details </h2><br/>
+<div style="min-width: 960px; overflow:auto;">
+    <table  id="show_table" >
+      <thead>
+     <tr>
+       
+          <td style=" padding-right: 5px; padding-left: 5px; padding-bottom: 5px; min-width: 50px"><font size="3"><b>Email </b></font></td> 
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 150px "><font size="3"><b>Role </b></font></td>  
+        <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= @user.role %></td>
+      </tr>
+      
+      </thead>
+
+    </table>
+
+    
+  <%= link_to 'Back', user_index_url, :class=> 'btn' %>
+
+  <%= link_to 'Edit', edit_user_path(@user), :class=> 'btn' %>
+  </div>

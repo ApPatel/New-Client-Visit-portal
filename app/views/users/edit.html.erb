@@ -1,0 +1,32 @@
+<h1>Editing User</h1>
+<div style="height: 50px">
+</div>
+
+<div class='well span4'>
+
+<div><b><font size="3px">Email : </b></font>
+  <%= @user.email%>
+</div></br></br>
+         <%= form_for @user do |f| %>
+
+   
+          <div><b><font size="3px">Role</b></font><br>
+          <b><%= f.radio_button :role , 'Member',:checked => true %> Member
+            <br><%= f.radio_button :role, 'Admin'%> Admin
+          </b>
+         </div><br>
+         <br>
+
+         <%= submit_tag(:Submit, :name=>"edit_user_submit", :id=> "edit_user_submit", :class=> 'btn btn-primary')%> <%end%>
+
+      </div>
+
+
+
+
+
+<div class="span9">
+  <%= image_tag("back-icon.png", :border => 0) %>
+  <%= link_to 'Back', users_path, :class=> 'btn' %>
+</div>
+
