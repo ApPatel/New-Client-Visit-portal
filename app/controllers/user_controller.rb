@@ -2,88 +2,101 @@ class UserController < ApplicationController
   
   def new
     @user = User.new
-    @current_users= User.where('Status ="A"')
-    @deactivated_users =User.where('Status ="D"')
+    #@current_users= User.where('Status ="A"')
+    #@deactivated_users =User.where('Status ="D"')
   end
 
-  def manageUser
-    submit= "Submit"
-    case submit
-    when params[:deactivate_user_submit]
-      @data= User.deactivate_user params[:deactivate_User_List]
-      @data.each do |user_record|
-        user_record.Status = 'D'
-        user_record.save
-        @DeFlag=user_record.save
+  def index
+    @users = User.all
 
-      end
-      
-      if @DeFlag
-        flash[:notice] = "Successfully De-Activated User."
-        redirect_to new_user_path
-      else
-        flash[:notice] = "User Could not be deactivated."
-        redirect_to new_user_path
-      end
-
-
-    when params[:reactivate_user_submit]
-      @data1= User.reactivate_user params[:reactivate_User_List]
-      @data1.each do |user_record|
-        user_record.Status = 'A'
-        user_record.save
-        @ReFlag=user_record.save
-      end
-
-      if @ReFlag
-        flash[:notice] = "Successfully Re-Activated User."
-        redirect_to new_user_path
-      else
-        flash[:notice] = "User Could notbe reactivated."
-        redirect_to new_user_path
-      end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
     end
-
-    deactivate= "Deactivate"
-    case deactivate
-    when params[:deactivate_current_user_submit]
-      @email = current_user.email
-      puts @email
-      @current_user= User.where("email = '#{@email}'")
-      @current_user.each do |user|
-        user.Status = 'D'
-        user.save
-        @ReFlag=user.save
-      end
-      if @ReFlag
-        flash[:notice] = "Successfully De-Activated User."
-        redirect_to new_user_path
-      else
-        flash[:notice] = "User Could not be deactivated."
-        redirect_to new_user_path
-      end
-
-    end
-
   end
+
+  # GET /users/1
+  # GET /users/1.json
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+
+
+
+  # POST /users
+  # POST /users.json
 
   def create
     @user = User.new(params[:user])
     @user.Status = 'A'
 
     puts "*****************************************************************************"
-    puts @user
+    puts @user.Status + "*****" + @user.email
     puts "*****************************************************************************"
 
 
     if @user.save
       flash[:notice] = "Successfully created User."
-      redirect_to new_user_path
+      redirect_to user_index_url
     else
       flash[:notice] = "Sorry, the User could not be created."
-      redirect_to new_user_path
+      redirect_to user_index_url
     end
   end
 
 
+  # GET /users/1/edit
+  def edit
+        
+    @user = User.find(params[:id])
+    puts params[:id]
+    puts "*******************************EDIT---new**********************************************"
+    puts @user.Status + "*****" + @user.email
+    puts "*******************************EDIT**********************************************"
+
+
+  end
+
+
+  def update
+ puts "*****************************************************************************"
+    puts params[:id] 
+
+    puts "*****************************************************************************"
+    @user = User.find(params[:id])
+
+
+    puts "*****************************************************************************"
+    puts @user.Status + "*****" + @user.email
+    puts "*****************************************************************************"
+
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'user was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to user_index_url }
+      format.json { head :no_content }
+    end
+  end
 end
