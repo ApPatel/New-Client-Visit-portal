@@ -18,7 +18,7 @@ class ChecklistsControllerTest < ActionController::TestCase
 
   test "should create checklist" do
     assert_difference('Checklist.count') do
-      post :create, checklist: {  }
+      post :create, checklist: { GroundTransCheck: @checklist.GroundTransCheck, GroundTransComment: @checklist.GroundTransComment, LaptopPassCheck: @checklist.LaptopPassCheck, LaptopPassComment: @checklist.LaptopPassComment, ODCAccessCheck: @checklist.ODCAccessCheck, ODCAccessComment: @checklist.ODCAccessComment, SEZPassCheck: @checklist.SEZPassCheck, SEZPassComment: @checklist.SEZPassComment, TCSVisitorPassCheck: @checklist.TCSVisitorPassCheck, TCSVisitorPassComment: @checklist.TCSVisitorPassComment, email: @checklist.email, visit_id: @checklist.visit_id }
     end
 
     assert_redirected_to checklist_path(assigns(:checklist))
@@ -35,7 +35,7 @@ class ChecklistsControllerTest < ActionController::TestCase
   end
 
   test "should update checklist" do
-    put :update, id: @checklist, checklist: {  }
+    put :update, id: @checklist, checklist: { GroundTransCheck: @checklist.GroundTransCheck, GroundTransComment: @checklist.GroundTransComment, LaptopPassCheck: @checklist.LaptopPassCheck, LaptopPassComment: @checklist.LaptopPassComment, ODCAccessCheck: @checklist.ODCAccessCheck, ODCAccessComment: @checklist.ODCAccessComment, SEZPassCheck: @checklist.SEZPassCheck, SEZPassComment: @checklist.SEZPassComment, TCSVisitorPassCheck: @checklist.TCSVisitorPassCheck, TCSVisitorPassComment: @checklist.TCSVisitorPassComment, email: @checklist.email, visit_id: @checklist.visit_id }
     assert_redirected_to checklist_path(assigns(:checklist))
   end
 

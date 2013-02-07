@@ -42,11 +42,13 @@
 
 
 
+<% if !@visit.checklist %>
+ <%= link_to 'Generate Checklist',  new_visit_checklist_path(@visit), :class=> 'btn' %>
 
- <%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => @visit.id), :class=> 'btn' %>
+<% else %>
 
-
-
+  <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Edit Checklist',  edit_visit_checklist_path(@visit), :class=> 'btn' %></td>
+<% end %>
 
 
 </br></br>

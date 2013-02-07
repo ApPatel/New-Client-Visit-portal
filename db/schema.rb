@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201143047) do
+ActiveRecord::Schema.define(:version => 20130207112813) do
 
   create_table "agendas", :force => true do |t|
     t.date     "Date"
@@ -35,20 +35,20 @@ ActiveRecord::Schema.define(:version => 20130201143047) do
   end
 
   create_table "checklists", :force => true do |t|
-    t.string   "ground_trans_check"
-    t.text     "ground_trans_text"
-    t.string   "laptop_pass_check"
-    t.text     "laptop_pass_text"
-    t.string   "sez_pass_check"
-    t.text     "sez_pass_text"
-    t.string   "tcs_visitor_pass_check"
-    t.text     "tcs_visitor_pass_text"
-    t.string   "odc_access_check"
-    t.text     "odc_access_text"
-    t.text     "email"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.string   "GroundTransCheck"
+    t.string   "GroundTransComment"
+    t.string   "LaptopPassCheck"
+    t.string   "LaptopPassComment"
+    t.string   "SEZPassCheck"
+    t.string   "SEZPassComment"
+    t.string   "TCSVisitorPassCheck"
+    t.string   "TCSVisitorPassComment"
+    t.string   "ODCAccessCheck"
+    t.string   "ODCAccessComment"
     t.integer  "visit_id"
+    t.string   "email"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "users", :force => true do |t|

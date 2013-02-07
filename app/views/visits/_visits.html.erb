@@ -33,7 +33,19 @@
             <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px " align="center"><%= link_to(image_tag("Download-icon.png", :border => 0), visit.attachment.url)%></td>
         <% end %>
          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Make Agenda Sheet', agenda_visits_path(:visit => visit.id), :class=> 'btn' %></td>
-          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => visit.id), :class=> 'btn' %></td>
+
+
+  
+<% if !visit.checklist %>
+
+ <td><%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => visit.id), :class=> 'btn' %></td>
+
+<% else %>
+
+  <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Edit Checklist',  edit_visit_checklist_path(:visit_id => visit.id, :id => visit.checklist.id), :class=> 'btn' %></td>
+<% end %>
+
+
 
           <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><b><%= link_to(image_tag("destroy.png", :border => 0), visit, confirm: 'Are you sure?', method: :delete )%></b></td>
       </tr>       

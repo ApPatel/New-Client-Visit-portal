@@ -24,8 +24,8 @@ class ChecklistsController < ApplicationController
   # GET /checklists/new
   # GET /checklists/new.json
   def new
-    @visit = Visit.find_by_id(params[:visit_id])
-    @checklist = Checklist.new(:visit_id => params[:visit_id])
+   @visit = Visit.find_by_id(params[:visit_id])
+   @checklist = Checklist.new(:visit_id => params[:visit_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,15 +35,15 @@ class ChecklistsController < ApplicationController
 
   # GET /checklists/1/edit
   def edit
-        @visit = Visit.find_by_id(params[:visit_id])
-    @checklist = Checklist.find(params[:visit_id])
-  end
+   @visit = Visit.find_by_id(params[:visit_id])
+   @checklist = @visit.checklist#Checklist.new(:visit_id => params[:visit_id])
 
+  end
 
   # POST /checklists
   # POST /checklists.json
-  def create
-   @checklist = Visit.find_by_id(params[:visit_id])
+  def create 
+    @visit = Visit.find_by_id(params[:visit_id])
     @checklist = Checklist.new(params[:checklist].merge(:visit_id => params[:visit_id]))
 
 
@@ -51,7 +51,7 @@ class ChecklistsController < ApplicationController
 
     respond_to do |format|
       if @checklist.save
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully created.' }
+        format.html { redirect_to [@visit,@checklist], notice: 'Checklist was successfully created.' }
         format.json { render json: @checklist, status: :created, location: @checklist }
       else
         format.html { render action: "new" }

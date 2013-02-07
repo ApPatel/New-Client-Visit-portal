@@ -1,4 +1,4 @@
-<%= form_for(@checklist) do |f| %>
+<%= form_for([@visit, @checklist]) do |f| %>
   <% if @checklist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
@@ -21,8 +21,8 @@
         <font size="3px">Ground Transport :</font>
       </td>
       <td>
-            <%= f.check_box(:ground_trans_check) %>
-            <%= f.text_area :ground_trans_text, :rows=>1, :cols=>50 %></br>
+            <%= f.check_box(:GroundTransCheck) %>
+            <%= f.text_area :GroundTransComment, :rows=>1, :cols=>50 %></br>
       </td>
         
     </tr>
@@ -32,8 +32,8 @@
         <font size="3px">Laptop Pass :</font>
       </td>
       <td>
-            <%= f.check_box(:laptop_pass_check) %>
-            <%= f.text_area :laptop_pass_text, :rows=>1, :cols=>50 %></br>
+            <%= f.check_box(:LaptopPassCheck) %>
+            <%= f.text_area :LaptopPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
     </tr>
@@ -43,8 +43,8 @@
         <font size="3px">SEZ Pass         :</font>
       </td>
       <td>
-            <%= f.check_box(:sez_pass_check) %>
-            <%= f.text_area :sez_pass_text, :rows=>1, :cols=>50 %></br>
+            <%= f.check_box(:SEZPassCheck) %>
+            <%= f.text_area :SEZPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
     </tr>
@@ -54,8 +54,8 @@
         <font size="3px">TCS Visitor Pass :</font>
       </td>
       <td>
-            <%= f.check_box(:tcs_visitor_pass_check)%>
-            <%= f.text_area :tcs_visitor_pass_text, :rows=>1, :cols=>50 %></br>
+            <%= f.check_box(:TCSVisitorPassCheck)%>
+            <%= f.text_area :TCSVisitorPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
     </tr>
@@ -65,8 +65,8 @@
         <font size="3px">ODC Access       :</font>
       </td>
       <td>
-            <%= f.check_box(:odc_access_check) %>
-            <%= f.text_area :odc_access_text, :rows=>1, :cols=>50 %></br>
+            <%= f.check_box(:ODCAccessCheck) %>
+            <%= f.text_area :ODCAccessComment, :rows=>1, :cols=>50 %></br>
       </td>
         
     </tr>
@@ -84,30 +84,21 @@
             &nbsp&nbsp&nbsp
             <%= f.text_area :email, :rows=>1, :cols=>50 %></br>
       </td>
-        
     </tr>
-
-
-
-
   </table>  
-
-  
-
- 
 
 <div style="height: 50px">
 </div>
 
-<div>  <%= f.submit "Save & Show", :class=> 'btn btn-primary' %></div>
 
+<div>  <%= f.submit "Save", :class=> 'btn btn-primary' %></div>
 </div>
 
 <% end %>
+
 
 <div class="span9">
   <%= image_tag("back-icon.png", :border => 0) %>
   <%= link_to 'Back', visit_path(@visit), :class=> 'btn' %>
 </div>
-
 

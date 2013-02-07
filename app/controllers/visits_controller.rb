@@ -18,10 +18,7 @@ class VisitsController < ApplicationController
  
     def data
      @agenda = Agenda.where(:visit_id=> params[:visit])
-
-
-   
-   end
+    end
 
 
 
@@ -111,8 +108,10 @@ class VisitsController < ApplicationController
                 @tid = @id
         end 
     end
+
   def index
- @visits = Visit.all
+
+    @visits = Visit.all
 # @visits = Visit.search(params[:search]).page(params[:page]).per(5)
  
   # @visits = Visit.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(3)

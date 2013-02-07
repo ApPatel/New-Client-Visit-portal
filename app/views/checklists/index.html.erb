@@ -3,16 +3,16 @@
 <table>
   <tr>
     <th>VISIT ID</th>
-    <th>Ground trans check</th>
-    <th>Ground trans text</th>
-    <th>Laptop pass check</th>
-    <th>Laptop pass text</th>
-    <th>Sez pass check</th>
-    <th>Sez pass text</th>
-    <th>Tcs visitor pass check</th>
-    <th>Tcs visitor pass text</th>
-    <th>Odc access check</th>
-    <th>Odc access text</th>
+    <th>Groundtranscheck</th>
+    <th>Groundtranscomment</th>
+    <th>Laptoppasscheck</th>
+    <th>Laptoppasscomment</th>
+    <th>Sezpasscheck</th>
+    <th>Sezpasscomment</th>
+    <th>Tcsvisitorpasscheck</th>
+    <th>Tcsvisitorpasscomment</th>
+    <th>Odcaccesscheck</th>
+    <th>Odcaccesscomment</th>
     <th>Email</th>
     <th></th>
     <th></th>
@@ -22,16 +22,16 @@
 <% @checklists.each do |checklist| %>
   <tr>
     <td><%= checklist.visit_id %></td>
-    <td><%= checklist.ground_trans_check %></td>
-    <td><%= checklist.ground_trans_text %></td>
-    <td><%= checklist.laptop_pass_check %></td>
-    <td><%= checklist.laptop_pass_text %></td>
-    <td><%= checklist.sez_pass_check %></td>
-    <td><%= checklist.sez_pass_text %></td>
-    <td><%= checklist.tcs_visitor_pass_check %></td>
-    <td><%= checklist.tcs_visitor_pass_text %></td>
-    <td><%= checklist.odc_access_check %></td>
-    <td><%= checklist.odc_access_text %></td>
+    <td><%= checklist.GroundTransCheck %></td>
+    <td><%= checklist.GroundTransComment %></td>
+    <td><%= checklist.LaptopPassCheck %></td>
+    <td><%= checklist.LaptopPassComment %></td>
+    <td><%= checklist.SEZPassCheck %></td>
+    <td><%= checklist.SEZPassComment %></td>
+    <td><%= checklist.TCSVisitorPassCheck %></td>
+    <td><%= checklist.TCSVisitorPassComment %></td>
+    <td><%= checklist.ODCAccessCheck %></td>
+    <td><%= checklist.ODCAccessComment %></td>
     <td><%= checklist.email %></td>
     <td><%= link_to 'Show', checklist %></td>
     <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
