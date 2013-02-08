@@ -64,7 +64,6 @@ class ChecklistsController < ApplicationController
   # PUT /checklists/1.json
   def update
     @checklist = Checklist.find(params[:id])
-
     respond_to do |format|
       if @checklist.update_attributes(params[:checklist])
         format.html { redirect_to visit_checklist_path, notice: 'Checklist was successfully updated.' }
