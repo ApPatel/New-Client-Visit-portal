@@ -6,4 +6,5 @@ class Checklist < ActiveRecord::Base
 
 
   belongs_to :visit
+  
 end

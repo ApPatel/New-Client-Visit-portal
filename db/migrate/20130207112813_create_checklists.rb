@@ -15,6 +15,7 @@ class CreateChecklists < ActiveRecord::Migration
       t.string :email
 
       t.timestamps
+      
     end
   end
 end
