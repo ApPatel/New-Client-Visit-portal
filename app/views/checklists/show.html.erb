@@ -61,5 +61,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
-<%= link_to 'Back', checklists_path %>
+<%= link_to 'Edit Checklist',  edit_visit_checklist_path(@checklist.visit_id, @checklist.id), :class=> 'btn' %> |
+<%= link_to 'Back', visits_path, :class=> 'btn' %>

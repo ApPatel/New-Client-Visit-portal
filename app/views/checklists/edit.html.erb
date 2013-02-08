@@ -2,5 +2,13 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @checklist %> |
-<%= link_to 'Back', checklists_path %>
+
+<div class="span9">
+  <%= link_to 'Show', visit_checklist_path, :class=> 'btn'  %> |
+  <%#= link_to 'Back', visit_path(@visit), :class=> 'btn' %>
+  <%= link_to 'Back', visits_path, :class=> 'btn' %>
+</div>
+
+
+<%#= link_to 'Show', visit_checklist_path, :class=> 'btn'  %> 
+<%#= link_to 'Back', visits_path, :class=> 'btn' %>

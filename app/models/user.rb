@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable,:trackable,
   devise  :database_authenticatable,:registerable,
-    :recoverable, :rememberable,  :validatable, :timeoutable #, :timeout_in => 5.minutes
+    :recoverable, :rememberable,  :validatable#, :timeoutable #, :timeout_in => 5.minutes
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :role, :id, :status, :remember_me

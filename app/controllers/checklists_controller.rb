@@ -67,7 +67,7 @@ class ChecklistsController < ApplicationController
 
     respond_to do |format|
       if @checklist.update_attributes(params[:checklist])
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
+        format.html { redirect_to visit_checklist_path, notice: 'Checklist was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

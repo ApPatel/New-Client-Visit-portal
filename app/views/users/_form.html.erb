@@ -1,5 +1,5 @@
 <div class='well span4'>
-         <%= form_for @user, :url => user_index_path do |f| %>
+         <%= form_for @user do |f| %>
 
           <div><br><b><font size="3px">Email</b></font><br>
             <%= f.text_field :email %></div><br>
@@ -17,7 +17,9 @@
          </div><br>
          <br>
 
-          <div><%= f.submit "Save", :class=> 'btn btn-primary' %></div> <%end%>
+          <div><%= f.submit "Save", :class=> 'btn btn-primary' %></div> 
+
+          <%end%>
 
       </div>
 

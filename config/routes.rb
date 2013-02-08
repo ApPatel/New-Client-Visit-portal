@@ -3,9 +3,9 @@
   #resources :checklists
 
 
-      #match "visit/agenda" => "visits#agenda", :as => :agenda
-  #match "visit/data" => "visits#data", :as => :data
-  #match "visit/dbaction" => "visits#dbaction", :as => :dbaction
+  match "visit/agenda" => "visits#agenda", :as => :agenda
+  match "visit/data" => "visits#data", :as => :data
+  match "visit/dbaction" => "visits#dbaction", :as => :dbaction
 
 
   #resources :agendas
@@ -26,14 +26,16 @@
     root :to => 'visits#index'
 
 
-    devise_for :users do
+   # devise_for :users do
+    #  get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+    #end
+   
+  resources :users, :controller => 'users'
+
+
+   devise_for :users, :path_prefix => 'my' do
       get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
     end
-   
-  resources :users
-
-
-   devise_for :users, :path_prefix => 'my'
 
 
 

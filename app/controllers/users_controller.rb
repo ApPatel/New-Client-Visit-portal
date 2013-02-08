@@ -43,10 +43,10 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Successfully created User."
-      redirect_to user_index_url
+      redirect_to users_path
     else
       flash[:notice] = "Sorry, the User could not be created."
-      redirect_to user_index_url
+      redirect_to users_path
     end
   end
 
