@@ -49,20 +49,7 @@ class VisitsController < ApplicationController
                 agenda1.StartTimeMin = startmin.to_i
                 agenda1.EndTimeHour = endhour.to_i
                 agenda1.EndTimeMin = endmin.to_i
-                if (agenda1.EndTimeHour < agenda1.StartTimeHour)
-                 agenda1.timeduration="Invalid time duration"
-                 elsif (agenda1.EndTimeMin>=agenda1.StartTimeMin) 
-
-                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
-
-                elsif (agenda1.EndTimeMin<agenda1.StartTimeMin && agenda1.EndTimeMin!=0 )
-                   agenda1.timeduration="#{(agenda1.EndTime-agenda1.StartTime)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
-
-                elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
-                  agenda1.timeduration="#{(agenda1.EndTime-agenda1.StartTime)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
-                    elsif (agenda1.EndTimeHour < agenda1.StartTimeHour)
-                 agenda1.timeduration="Invalid start and end time"
-                end
+                agenda1.timeduration= duration
                 agenda1.Agenda =agenda
                 agenda1.Details =details
                 agenda1.ClientParticipants =clientparticipants
@@ -83,21 +70,8 @@ class VisitsController < ApplicationController
                 agenda1.StartTimeMin = startmin.to_i
                 agenda1.EndTimeHour = endhour.to_i
                 agenda1.EndTimeMin = endmin.to_i
-                if (agenda1.EndTimeHour < agenda1.StartTimeHour)
-               
-                 agenda1.timeduration="Invalid time duration"
-                elsif (agenda1.EndTimeMin>=agenda1.StartTimeMin) 
-
-                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.EndTimeMin-agenda1.StartTimeMin)}"+" mins"
-
-                elsif (agenda1.EndTimeMin<agenda1.StartTimeMin && agenda1.EndTimeMin!=0 )
-                   agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)}"+" hr(s)"+" #{(agenda1.StartTimeMin-agenda1.EndTimeMin)}"+" mins"
-
-                elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
-                  agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
-                elsif (agenda1.EndTimeHour < agenda1.StartTimeHour)
-                 agenda1.timeduration="Invalid start and end time"
-                end
+                 agenda1.timeduration= duration
+                
                 agenda1.Agenda =agenda
                 agenda1.Details =details
                 agenda1.ClientParticipants =clientparticipants

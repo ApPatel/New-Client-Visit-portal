@@ -27,7 +27,7 @@
             grid.setHeader("Date,Start Time,#cspan,End Time,#cspan,Duration,Agenda,Details,Firm Participants,TCS Participants");
             grid.attachHeader(["#rspan", "HH", "MM", "HH", "MM", "#rspan","#rspan","#rspan","#rspan","#rspan"]);
             grid.enableMultiselect(true)
-            grid.enableLightMouseNavigation(true);
+       
             grid.setInitWidths("100,50,50,50,50,100,150,200,200,200");
             grid.setSkin("dhx_skyblue");
             grid.enableAutoHeight(true);
@@ -109,22 +109,42 @@ grid.attachEvent("onEditCell",function(stage,rId,cInd,nValue,oValue){
                
                EndTimeMin= parseInt(grid.cellById(id,4).getValue());
 
+          
+             if (EndTimeHour == StartTimeHour) 
+             { if (EndTimeMin > StartTimeMin)
+                { 
+                  timeduration=(EndTimeMin-StartTimeMin)+" mins"
+                  }
+                if (EndTimeMin == StartTimeMin)
+                { 
+                  timeduration="Start and end time cant be same"
+                  }                
 
-               
-             if ((EndTimeHour >= StartTimeHour) && (EndTimeMin>=StartTimeMin) )
+                if (StartTimeMin > EndTimeMin)
+                {
+                  timeduration="Start Time can not be greater then End time"
+                }
+              }
+
+
+             if ((EndTimeHour > StartTimeHour) && (EndTimeMin>=StartTimeMin) )
 
                   timeduration=(EndTimeHour-StartTimeHour) +"hr(s)"+(EndTimeMin-StartTimeMin)+" mins"
 
-           if ((EndTimeHour >= StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
+           if ((EndTimeHour > StartTimeHour) && (EndTimeMin<StartTimeMin) && EndTimeMin!=0 )
                    timeduration=(EndTimeHour-StartTimeHour)+" hr(s)"+(StartTimeMin-EndTimeMin)+" mins"
 
-             if ( (EndTimeHour >= StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
+             if ( (EndTimeHour > StartTimeHour) && (EndTimeMin==0 && StartTimeMin!=0))
                   timeduration=(EndTimeHour-StartTimeHour-1)+" hr(s)"+(60-StartTimeMin)+" mins"
 
                if (EndTimeHour < StartTimeHour) 
-                timeduration="Invalid Start and End time"
+
+                timeduration="Start Time can not be greater then End time"
+
+              
    grid.cells(id,5).setValue(timeduration);
-      
+         dp = new dataProcessor("/visit/dbaction?visit="+deco);
+            dp.init(grid);
           
     }
     return true;

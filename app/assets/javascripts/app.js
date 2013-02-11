@@ -36,7 +36,7 @@ $(function() {
         changeYear: true,
         numberOfMonths: 1,
         showAnim: 'fold',
-        dateFormat: $.datepicker.ISO_8601
+        dateFormat: 'dd-mm-yy'
         
     });
 
