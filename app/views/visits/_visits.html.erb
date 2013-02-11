@@ -38,11 +38,11 @@
   
 <% if !visit.checklist %>
 
- <td><%= link_to 'Generate Checklist',  new_visit_checklist_path(:visit_id => visit.id), :class=> 'btn' %></td>
+ <td><%= link_to 'New Checklist',  new_visit_checklist_path(:visit_id => visit.id), :class=> 'btn' %></td>
 
 <% else %>
 
-  <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><%= link_to 'Edit Checklist',  edit_visit_checklist_path(:visit_id => visit.id, :id => visit.checklist.id), :class=> 'btn' %></td>
+  <td><%= link_to 'Edit Checklist',  edit_visit_checklist_path(:visit_id => visit.id, :id => visit.checklist.id), :class=> 'btn' %></td>
 <% end %>
 
 

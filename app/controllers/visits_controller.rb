@@ -61,7 +61,7 @@ class VisitsController < ApplicationController
                 elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
                   agenda1.timeduration="#{(agenda1.EndTime-agenda1.StartTime)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
                     elsif (agenda1.EndTimeHour < agenda1.StartTimeHour)
-                 agenda1.timeduration="Invalid time duration"
+                 agenda1.timeduration="Invalid start and end time"
                 end
                 agenda1.Agenda =agenda
                 agenda1.Details =details
@@ -96,7 +96,7 @@ class VisitsController < ApplicationController
                 elsif (agenda1.EndTimeMin==0 && agenda1.StartTimeMin!=0)
                   agenda1.timeduration="#{(agenda1.EndTimeHour-agenda1.StartTimeHour)-1}"+" hr(s)"+" #{(60-agenda1.StartTimeMin)}"+" mins"
                 elsif (agenda1.EndTimeHour < agenda1.StartTimeHour)
-                 agenda1.timeduration="Invalid time duration"
+                 agenda1.timeduration="Invalid start and end time"
                 end
                 agenda1.Agenda =agenda
                 agenda1.Details =details
