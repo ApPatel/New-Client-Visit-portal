@@ -21,7 +21,7 @@
         <font size="3px">Ground Transport :</font>
       </td>
       <td>
-            <%= f.check_box(:GroundTransCheck)%>
+            <%= f.check_box(:GroundTransCheck,{}, "Required", "Not Required")%>
             <%= f.text_area :GroundTransComment, :rows=>1, :cols=>50 %></br>
       </td>
         
@@ -32,7 +32,7 @@
         <font size="3px">Laptop Pass :</font>
       </td>
       <td>
-            <%= f.check_box(:LaptopPassCheck) %>
+            <%= f.check_box(:LaptopPassCheck,{}, "Required", "Not Required") %>
             <%= f.text_area :LaptopPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
@@ -43,7 +43,7 @@
         <font size="3px">SEZ Pass         :</font>
       </td>
       <td>
-            <%= f.check_box(:SEZPassCheck) %>
+            <%= f.check_box(:SEZPassCheck,{}, "Required", "Not Required") %>
             <%= f.text_area :SEZPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
@@ -54,7 +54,7 @@
         <font size="3px">TCS Visitor Pass :</font>
       </td>
       <td>
-            <%= f.check_box(:TCSVisitorPassCheck)%>
+            <%= f.check_box(:TCSVisitorPassCheck,{}, "Required", "Not Required")%>
             <%= f.text_area :TCSVisitorPassComment, :rows=>1, :cols=>50 %></br>
       </td>
         
@@ -65,7 +65,7 @@
         <font size="3px">ODC Access       :</font>
       </td>
       <td>
-            <%= f.check_box(:ODCAccessCheck) %>
+            <%= f.check_box(:ODCAccessCheck,{}, "Required", "Not Required") %>
             <%= f.text_area :ODCAccessComment, :rows=>1, :cols=>50 %></br>
       </td>
         
