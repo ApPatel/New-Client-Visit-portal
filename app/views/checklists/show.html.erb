@@ -1,67 +1,48 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Greetings, <%= @checklist.email %></h1>
+    <h2>===============================</h2>
+    <p>
+      Here is the list of checklist regarding Client Visit : Visit ID-<%= @checklist.visit_id %>.<br/>
+    </p>
+    <p>
 
-<p>
-  <b>Groundtranscheck:</b>
-  <%= @checklist.GroundTransCheck %>
-</p>
+      Ground Transport requirement : <%= @checklist.GroundTransCheck %> <br/>
+      Comment : <%= @checklist.GroundTransComment %>
+    </p>
 
-<p>
-  <b>Groundtranscomment:</b>
-  <%= @checklist.GroundTransComment %>
-</p>
+    <p>
 
-<p>
-  <b>Laptoppasscheck:</b>
-  <%= @checklist.LaptopPassCheck %>
-</p>
-
-<p>
-  <b>Laptoppasscomment:</b>
-  <%= @checklist.LaptopPassComment %>
-</p>
-
-<p>
-  <b>Sezpasscheck:</b>
-  <%= @checklist.SEZPassCheck %>
-</p>
-
-<p>
-  <b>Sezpasscomment:</b>
-  <%= @checklist.SEZPassComment %>
-</p>
-
-<p>
-  <b>Tcsvisitorpasscheck:</b>
-  <%= @checklist.TCSVisitorPassCheck %>
-</p>
-
-<p>
-  <b>Tcsvisitorpasscomment:</b>
-  <%= @checklist.TCSVisitorPassComment %>
-</p>
-
-<p>
-  <b>Odcaccesscheck:</b>
-  <%= @checklist.ODCAccessCheck %>
-</p>
-
-<p>
-  <b>Odcaccesscomment:</b>
-  <%= @checklist.ODCAccessComment %>
-</p>
-
-<p>
-  <b>Visit:</b>
-  <%= @checklist.visit_id %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @checklist.email %>
-</p>
+      Laptop Pass requirement : <%= @checklist.LaptopPassCheck %> <br/>
+      Comment : <%= @checklist.LaptopPassComment %>
+    </p>
 
 
+    <p>
+
+      SEZ Pass requirement : <%= @checklist.SEZPassCheck %> <br/>
+      Comment : <%= @checklist.SEZPassComment %>
+    </p>
+
+    <p>
+
+      TCS Visitors Pass requirement : <%= @checklist.TCSVisitorPassCheck %> <br/>
+      Comment : <%= @checklist.TCSVisitorPassComment %>
+    </p>
+
+    <p>
+
+      ODC Access requirement : <%= @checklist.ODCAccessCheck %> <br/>
+      Comment : <%= @checklist.ODCAccessComment %>
+    </p>
+  </br></br>
 
 
-<%= link_to 'Edit Checklist',  edit_visit_checklist_path(@checklist.visit_id, @checklist.id), :class=> 'btn' %> |
-<%= link_to 'Back', visits_path, :class=> 'btn' %>
+    <p>Thanks and have a great day!</p>
+    <p>Regards.</p>
+  </body>
+</html>

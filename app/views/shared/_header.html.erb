@@ -5,7 +5,9 @@
 
        
       </a>
-      <div class="brand" style="margin-top: 5px;"><h1><font color= "white">Client Visit Portal</font></h1></div>
+      <div class="brand" style="margin-top: 5px;"><h1><font color= "white">
+        <%= link_to(image_tag("header.JPG", :border => 0), visits_path) %>
+        <%#= link_to 'Client Visit Portal', visits_path %></font></h1></div>
       <div class="pull-right"  style="margin-top: 5px;">
         <% if user_signed_in? %>
           <div class="pull-right">
