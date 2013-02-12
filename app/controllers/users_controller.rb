@@ -36,11 +36,6 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.Status = 'A'
 
-    puts "*****************************************************************************"
-    puts @user.Status + "*****" + @user.email
-    puts "*****************************************************************************"
-
-
     if @user.save
       flash[:notice] = "Successfully created User."
       redirect_to users_path
@@ -71,24 +66,12 @@ end
 
      
 
-
-
-
-
-    #@user = User.find(params[:id])
-    #puts params[:id]
-    #puts "*******************************EDIT---new**********************************************"
-    #puts @user.Status + "*****" + @user.email
-    #puts "*******************************EDIT**********************************************"
-
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_index_url }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end

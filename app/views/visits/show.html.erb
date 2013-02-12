@@ -23,7 +23,7 @@
       </tr>
       <tr> 
 
-        <td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 150px "><font size="3"><b>Agenda Sheet </b></font></td> 
+        <td style=" padding-right: 5px; padding-left: 5px;padding-bottom: 5px; min-width: 150px "><font size="3"><b>Attached File </b></font></td> 
 
 
         <%  if @visit.attachment.blank? %>
@@ -43,7 +43,7 @@
 
 
   <br/>
- <%= link_to 'Make Agenda Sheet', agenda_visits_path(:visit => @visit.id), :class=> 'btn' %>
+ <%= link_to 'Agenda Sheet', agenda_visits_path(:visit => @visit.id), :class=> 'btn' %>
 
 
 
